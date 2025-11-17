@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speaker: You
   dialogue: Dollar Tree!
-  sprite: {fileID: 0}
+  sprite: {fileID: 7144502353408276527, guid: fc78e34e08075634db15b9a3bb7dace1, type: 3}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: 80f6a30842bdfab4fb3d998374ac86aa, type: 2}
   conditions: 

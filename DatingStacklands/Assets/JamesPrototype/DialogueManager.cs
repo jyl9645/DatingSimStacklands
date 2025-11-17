@@ -1,25 +1,28 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public GameObject[] choicePanels;
     public TMP_Text speakerText;
+    public Image image;
+
+    private TMP_Text dialogueText;
 
     public DialogueNode current;
 
     private bool isChoosing;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        dialogueText = dialoguePanel.GetComponentInChildren<TMP_Text>();
+
         HideChoices();
         NextDialogue(current);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !isChoosing)
@@ -28,9 +31,13 @@ public class DialogueManager : MonoBehaviour
             {
                 NextDialogue(current.responses[0]);
             }
-            else
+            else if (current.responses.Count > 1)
             {
                 ShowChoices();
+            }
+            else
+            {
+                dialogueText.text = "dialogue over";
             }
         }
     }
@@ -38,8 +45,10 @@ public class DialogueManager : MonoBehaviour
     private void NextDialogue(DialogueNode node)
     {
         current = node;
+
+        image.sprite = current.sprite;
         speakerText.text = current.speaker;
-        dialoguePanel.GetComponentInChildren<TMP_Text>().text = current.dialogue;
+        dialogueText.text = current.dialogue;
         
     }
 
@@ -47,19 +56,17 @@ public class DialogueManager : MonoBehaviour
     {
         HideChoices();
         current = current.responses[index];
+
+        image.sprite = current.sprite;
         speakerText.text = current.speaker;
-        dialoguePanel.GetComponentInChildren<TMP_Text>().text = current.dialogue;
+        dialogueText.text = current.dialogue;
     }
 
     private void ShowChoices()
     {
-        foreach (GameObject panel in choicePanels)
-        {
-            panel.SetActive(true);
-        }
-
         for (var i = 0; i < current.responses.Count; i++)
         {
+            choicePanels[i].SetActive(true);
             choicePanels[i].GetComponentInChildren<TMP_Text>().text = current.responses[i].dialogue;
         }
 

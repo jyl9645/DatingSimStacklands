@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: CD1
+  m_Name: F1
   m_EditorClassIdentifier: 
-  speaker: You
-  dialogue: Let's just go.
-  sprite: {fileID: -3905345726668355071, guid: dc092b99d72303742bb48da3371c6704, type: 3}
+  speaker: Sabrina
+  dialogue: Yea this is not working. Im leaving
+  sprite: {fileID: 7144502353408276527, guid: fc78e34e08075634db15b9a3bb7dace1, type: 3}
   heart_change: 0
-  responses:
-  - {fileID: 11400000, guid: 94bba7ea6ae29f3448a3168405e7de1f, type: 2}
+  responses: []
   conditions: 

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speaker: Sabrina
   dialogue: Yay
-  sprite: {fileID: -6002563908267880267, guid: b7cb6c71cac201b42be6e0aa70a86afb, type: 3}
+  sprite: {fileID: -3905345726668355071, guid: dc092b99d72303742bb48da3371c6704, type: 3}
   heart_change: 0
   responses:
   - {fileID: 11400000, guid: 374e477b293e236429f829269b160c13, type: 2}

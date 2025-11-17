@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speaker: You
   dialogue: Target!
-  sprite: {fileID: 0}
+  sprite: {fileID: -3905345726668355071, guid: dc092b99d72303742bb48da3371c6704, type: 3}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: da33aa596371cb94080e68f48b9e7ab4, type: 2}
   conditions: 

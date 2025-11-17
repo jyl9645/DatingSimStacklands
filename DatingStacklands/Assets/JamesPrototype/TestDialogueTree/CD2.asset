@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speaker: You
   dialogue: Hmm... let's go to the food court.
-  sprite: {fileID: 0}
+  sprite: {fileID: -6002563908267880267, guid: b7cb6c71cac201b42be6e0aa70a86afb, type: 3}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: ba1709ba5c1768049a108ec090fbb3dd, type: 2}
   conditions: 
