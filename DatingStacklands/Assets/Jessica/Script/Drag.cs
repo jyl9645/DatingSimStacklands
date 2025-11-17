@@ -42,7 +42,6 @@ public class Drag : MonoBehaviour
                     stackingTimer = 0.5f;
                 }
 
-                // Only bring to front if NOT a parent
                 if (clicked.childCount == 0)
                 {
                     SpriteRenderer sr = clicked.GetComponent<SpriteRenderer>();
