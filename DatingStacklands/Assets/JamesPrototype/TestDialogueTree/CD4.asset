@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: B2
+  m_Name: CD4
   m_EditorClassIdentifier: 
-  id: 4
   speaker: You
-  dialogue: Eat
-  sprite: {fileID: -6002563908267880267, guid: b7cb6c71cac201b42be6e0aa70a86afb, type: 3}
+  dialogue: Home Depot!
+  sprite: {fileID: 0}
   heart_change: 0
-  responses:
-  - {fileID: 11400000, guid: e4f33f5a8e96a2f48bf651ce49d76362, type: 2}
+  responses: []
   conditions: 

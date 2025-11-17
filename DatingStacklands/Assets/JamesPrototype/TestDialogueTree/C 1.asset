@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
   m_Name: C 1
   m_EditorClassIdentifier: 
-  id: 3
   speaker: Sabrina
   dialogue: Im Hungry.
   sprite: {fileID: -6002563908267880267, guid: b7cb6c71cac201b42be6e0aa70a86afb, type: 3}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: 70fcfe9c5e1794340a9dd6c991278997, type: 2}
   conditions: 

@@ -6,6 +6,7 @@ public class DialogueManager : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public GameObject[] choicePanels;
+    public TMP_Text speakerText;
 
     public DialogueNode current;
 
@@ -37,6 +38,7 @@ public class DialogueManager : MonoBehaviour
     private void NextDialogue(DialogueNode node)
     {
         current = node;
+        speakerText.text = current.speaker;
         dialoguePanel.GetComponentInChildren<TMP_Text>().text = current.dialogue;
         
     }
@@ -45,6 +47,7 @@ public class DialogueManager : MonoBehaviour
     {
         HideChoices();
         current = current.responses[index];
+        speakerText.text = current.speaker;
         dialoguePanel.GetComponentInChildren<TMP_Text>().text = current.dialogue;
     }
 

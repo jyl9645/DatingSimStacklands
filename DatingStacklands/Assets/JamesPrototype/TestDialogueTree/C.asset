@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
   m_Name: C
   m_EditorClassIdentifier: 
-  id: 3
   speaker: Sabrina
   dialogue: Yay
   sprite: {fileID: -6002563908267880267, guid: b7cb6c71cac201b42be6e0aa70a86afb, type: 3}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: 374e477b293e236429f829269b160c13, type: 2}
+  - {fileID: 11400000, guid: 11572902c14ab394aa2ffeeb9f5c53b1, type: 2}
+  - {fileID: 11400000, guid: 0bd7b50eec77f544397aa1c70453446b, type: 2}
   conditions: 
