@@ -1,0 +1,104 @@
+using UnityEngine;
+
+public class Draggable : MonoBehaviour
+{
+
+    GameObject currentDrag;
+
+    public float offset = -0.5f;
+    public int upOrder = 5;
+
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+
+            if (hit)
+            {
+                currentDrag = hit.collider.gameObject;
+                
+                if (currentDrag.transform.parent)
+                {
+                    currentDrag.transform.parent.DetachChildren();
+                    currentDrag.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                }
+                
+                if (currentDrag.transform.childCount != 0)
+                {
+                    foreach (Transform child in transform)
+                    {
+                        child.GetComponent<SpriteRenderer>().sortingOrder += upOrder;
+                    }
+                }
+                else
+                {
+                    currentDrag.GetComponent<SpriteRenderer>().sortingOrder = upOrder;
+                }
+            }
+        }
+
+        else if (Input.GetMouseButton(0) && currentDrag != null)
+        {
+            Vector3 v3 = Input.mousePosition;
+            v3.z = 10;
+            v3 = Camera.main.ScreenToWorldPoint(v3);
+            v3 = new Vector3(Mathf.Clamp(v3.x, -8, 8), Mathf.Clamp(v3.y, -4, 4), v3.z);
+            currentDrag.transform.position = v3;
+        }
+
+        else if (Input.GetMouseButtonUp(0))
+        {
+            currentDrag.transform.position = new Vector3(currentDrag.transform.position.x, currentDrag.transform.position.y, 0);
+
+            if (currentDrag.transform.childCount != 0)
+            {
+                foreach (Transform child in transform)
+                {
+                    child.GetComponent<SpriteRenderer>().sortingOrder -= upOrder;
+                }
+            }
+            else
+            {
+                currentDrag.GetComponent<SpriteRenderer>().sortingOrder = 0;
+            }
+
+            CheckForCollision();
+            currentDrag = null;
+        }
+    }
+
+    private void CheckForCollision()
+    {
+        Collider2D col = currentDrag.GetComponent<Collider2D>();
+        if (col == null) return;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(
+            col.bounds.center,
+            col.bounds.size,
+            0f
+        );
+
+        foreach (Collider2D h in hits)
+        {
+            if (h.gameObject == currentDrag) continue;
+            if (!h.CompareTag("Card")) continue;
+
+            Transform newParent = h.transform;
+            currentDrag.transform.SetParent(newParent);
+
+            if (currentDrag.transform.parent)
+            {
+                int parentOrder = currentDrag.transform.parent.GetComponent<SpriteRenderer>().sortingOrder;
+                currentDrag.GetComponent<SpriteRenderer>().sortingOrder = parentOrder + 1;
+            }
+            
+            Vector3 stackedPos = newParent.position;
+            stackedPos.y += offset;
+            currentDrag.transform.position = stackedPos;
+            return;
+        }
+
+    }
+}
