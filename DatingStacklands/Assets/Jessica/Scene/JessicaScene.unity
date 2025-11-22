@@ -437,6 +437,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4460771312759550890, guid: e2605926521cd384e8336e3d5fba88e6, type: 3}
+      propertyPath: green
+      value: 
+      objectReference: {fileID: 5232975477639885085, guid: 9c49d919592ef56469439f55334b924d, type: 3}
+    - target: {fileID: 4460771312759550890, guid: e2605926521cd384e8336e3d5fba88e6, type: 3}
+      propertyPath: orange
+      value: 
+      objectReference: {fileID: 7916257049000194040, guid: f392ccddb083cd045ae918fd39b240ea, type: 3}
+    - target: {fileID: 4460771312759550890, guid: e2605926521cd384e8336e3d5fba88e6, type: 3}
+      propertyPath: purple
+      value: 
+      objectReference: {fileID: 2181443931483397266, guid: 2b4da571d7ed93245b8c051c87e9f2a7, type: 3}
     - target: {fileID: 4696138086537526019, guid: e2605926521cd384e8336e3d5fba88e6, type: 3}
       propertyPath: m_Name
       value: Red
@@ -493,6 +505,22 @@ PrefabInstance:
     - target: {fileID: 3327750942764159212, guid: 6dd421b2c05a48d43990d1d4fcd237e6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5203108056457934389, guid: 6dd421b2c05a48d43990d1d4fcd237e6, type: 3}
+      propertyPath: green
+      value: 
+      objectReference: {fileID: 5232975477639885085, guid: 9c49d919592ef56469439f55334b924d, type: 3}
+    - target: {fileID: 5203108056457934389, guid: 6dd421b2c05a48d43990d1d4fcd237e6, type: 3}
+      propertyPath: orange
+      value: 
+      objectReference: {fileID: 7916257049000194040, guid: f392ccddb083cd045ae918fd39b240ea, type: 3}
+    - target: {fileID: 5203108056457934389, guid: 6dd421b2c05a48d43990d1d4fcd237e6, type: 3}
+      propertyPath: purple
+      value: 
+      objectReference: {fileID: 2181443931483397266, guid: 2b4da571d7ed93245b8c051c87e9f2a7, type: 3}
+    - target: {fileID: 5203108056457934389, guid: 6dd421b2c05a48d43990d1d4fcd237e6, type: 3}
+      propertyPath: card_color
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9087730820550945104, guid: 6dd421b2c05a48d43990d1d4fcd237e6, type: 3}
       propertyPath: m_Name
@@ -554,6 +582,22 @@ PrefabInstance:
     - target: {fileID: 4911471312536711790, guid: 8bad9f5aebb00fd408fd096e17a1d07e, type: 3}
       propertyPath: m_Name
       value: Blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469179865637565957, guid: 8bad9f5aebb00fd408fd096e17a1d07e, type: 3}
+      propertyPath: green
+      value: 
+      objectReference: {fileID: 5232975477639885085, guid: 9c49d919592ef56469439f55334b924d, type: 3}
+    - target: {fileID: 7469179865637565957, guid: 8bad9f5aebb00fd408fd096e17a1d07e, type: 3}
+      propertyPath: orange
+      value: 
+      objectReference: {fileID: 7916257049000194040, guid: f392ccddb083cd045ae918fd39b240ea, type: 3}
+    - target: {fileID: 7469179865637565957, guid: 8bad9f5aebb00fd408fd096e17a1d07e, type: 3}
+      propertyPath: purple
+      value: 
+      objectReference: {fileID: 2181443931483397266, guid: 2b4da571d7ed93245b8c051c87e9f2a7, type: 3}
+    - target: {fileID: 7469179865637565957, guid: 8bad9f5aebb00fd408fd096e17a1d07e, type: 3}
+      propertyPath: card_color
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
