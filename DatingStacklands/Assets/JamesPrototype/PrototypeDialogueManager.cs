@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class DialogueManager : MonoBehaviour
+public class PrototypeDialogueManager : MonoBehaviour
 {
     public GameObject dialoguePanel;
     public GameObject[] choicePanels;
