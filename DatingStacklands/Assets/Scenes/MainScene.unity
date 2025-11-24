@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c76108c170b71d4591e2e4d43e9c27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dateScreen: {fileID: 0}
+  dateScreen: {fileID: 1906616855}
   dialoguePanel: {fileID: 193893759}
   choicePanels:
   - {fileID: 460633959}
