@@ -22,7 +22,12 @@ public class CombineScript : MonoBehaviour
                 GameObject card = transform.GetChild(0).gameObject;
                 if (card == dateCard)
                 {
-                       gameManager.GetComponent<DialogueManager>().InitiateDialogue(a);
+                    if (!gameManager.GetComponent<DialogueManager>().onDate)
+                    {
+                        gameManager.GetComponent<DialogueManager>().InitiateDialogue(a);
+                        Destroy(card);
+                    }
+                       
                 }
             }
         }

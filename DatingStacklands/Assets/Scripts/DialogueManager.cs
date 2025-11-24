@@ -15,8 +15,10 @@ public class DialogueManager : MonoBehaviour
 
     public DialogueNode current;
 
-    private bool onDate;
+    public bool onDate;
     private bool isChoosing;
+
+    private GameObject[] cards;
 
     void Start()
     {
@@ -54,6 +56,12 @@ public class DialogueManager : MonoBehaviour
         dateScreen.SetActive(true);
         NextDialogue(current);
 
+        cards = GameObject.FindGameObjectsWithTag("Card");
+
+        foreach (GameObject card in cards)
+        {
+            card.SetActive(false);
+        }
     }
 
     public void CloseDialogue()
@@ -62,7 +70,12 @@ public class DialogueManager : MonoBehaviour
         current = null;
         dateScreen.SetActive(false);
         HideChoices();
-        transform.parent.gameObject.GetComponent<DayManager>().RemoveAction();
+        GetComponent<DayManager>().RemoveAction();
+
+        foreach (GameObject card in cards)
+        {
+            card.SetActive(true);
+        }
     }
 
     private void NextDialogue(DialogueNode node)
@@ -72,7 +85,6 @@ public class DialogueManager : MonoBehaviour
         image.sprite = current.sprite;
         speakerText.text = current.speaker;
         dialogueText.text = current.dialogue;
-        
     }
 
     public void NextIndexDialogue(int index)
@@ -105,6 +117,14 @@ public class DialogueManager : MonoBehaviour
         }
 
         isChoosing = false;
+    }
+
+    private void HideCards()
+    {
+        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
+        {
+            card.SetActive(false);
+        }
     }
 
 }

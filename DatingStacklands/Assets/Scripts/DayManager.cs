@@ -7,12 +7,15 @@ public class DayManager : MonoBehaviour
     public TMP_Text dayText;
     public TMP_Text actionsText;
 
-    private int day = 1;
+    public int day = 1;
     private int actionsDefault = 2;
-    private int actions = 2;
+    public int actions = 2;
 
     void Start()
     {
+        actions = actionsDefault;
+        day = 1;
+
         dayText.text = "Day " + day;
         actionsText.text = "Actions: " + actions;
     }
@@ -26,6 +29,7 @@ public class DayManager : MonoBehaviour
         if (actions > 1)
         {
             actions --;
+            Debug.Log(actions);
             actionsText.text = "Actions: " + actions;
         }
         else
