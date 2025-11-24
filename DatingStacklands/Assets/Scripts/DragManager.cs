@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class Draggable : MonoBehaviour
 {
-
+    //the currently dragged card
     GameObject currentDrag;
 
-    public float offset = -0.5f;
-    public int upOrder = 5;
+    //spacing in between stacked cards
+    private float offset = -0.5f;
+    //sorting order for cards that are currently dragging/selected
+    private int upOrder = 5;
 
     void Update()
     {
