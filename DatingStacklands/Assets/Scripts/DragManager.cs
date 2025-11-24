@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Draggable : MonoBehaviour
+public class DragManager : MonoBehaviour
 {
+
     //the currently dragged card
     GameObject currentDrag;
 
@@ -41,7 +42,7 @@ public class Draggable : MonoBehaviour
             }
         }
 
-        else if (Input.GetMouseButton(0) && currentDrag != null)
+        else if (currentDrag && Input.GetMouseButton(0))
         {
             Vector3 v3 = Input.mousePosition;
             v3.z = 10;
@@ -50,7 +51,7 @@ public class Draggable : MonoBehaviour
             currentDrag.transform.position = v3;
         }
 
-        else if (Input.GetMouseButtonUp(0))
+        else if (currentDrag && Input.GetMouseButtonUp(0))
         {
             currentDrag.transform.position = new Vector3(currentDrag.transform.position.x, currentDrag.transform.position.y, 0);
 
