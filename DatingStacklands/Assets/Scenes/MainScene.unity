@@ -582,12 +582,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330740327}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: -0.78, z: 0}
-  m_LocalScale: {x: 1.6246905, y: 2.5832307, z: 0.8766}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 202.49998, y: -35.09749, z: -4050}
+  m_LocalScale: {x: 73.11108, y: 116.245384, z: 39.447002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1877638940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &330740331
 BoxCollider2D:
@@ -941,12 +941,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910436291}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.32, y: 0.5, z: 0}
-  m_LocalScale: {x: 1.6246905, y: 2.5832307, z: 0.8766}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -194.40002, y: 22.50251, z: -4050}
+  m_LocalScale: {x: 73.11108, y: 116.245384, z: 39.447002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1877638940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &910436295
 BoxCollider2D:
@@ -1082,7 +1082,6 @@ GameObject:
   - component: {fileID: 1195502290}
   - component: {fileID: 1195502289}
   - component: {fileID: 1195502288}
-  - component: {fileID: 1195502291}
   m_Layer: 0
   m_Name: MallDateCard
   m_TagString: Card
@@ -1199,26 +1198,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195502287}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.84, y: -0.36, z: 0}
-  m_LocalScale: {x: 1.6246905, y: 2.5832307, z: 0.8766}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -37.800014, y: -16.19749, z: -4050}
+  m_LocalScale: {x: 73.11108, y: 116.245384, z: 39.447002}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1877638940}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1195502291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195502287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1abb1c96be577546b9db3221455c844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dateCard: {fileID: 1195502287}
 --- !u!1 &1237254334
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,6 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c76108c170b71d4591e2e4d43e9c27d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dateScreen: {fileID: 0}
   dialoguePanel: {fileID: 193893759}
   choicePanels:
   - {fileID: 460633959}
@@ -2292,7 +2279,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 910436294}
+  - {fileID: 1195502290}
+  - {fileID: 330740330}
   m_Father: {fileID: 1935026501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2432,7 +2422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1906616856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2552,9 +2542,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1906616856}
   - {fileID: 1877638940}
   - {fileID: 97139263}
+  - {fileID: 1906616856}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2781,6 +2771,3 @@ SceneRoots:
   - {fileID: 1498592370}
   - {fileID: 1935026501}
   - {fileID: 1906457990}
-  - {fileID: 910436294}
-  - {fileID: 1195502290}
-  - {fileID: 330740330}
