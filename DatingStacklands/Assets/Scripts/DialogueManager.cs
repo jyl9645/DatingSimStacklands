@@ -62,6 +62,7 @@ public class DialogueManager : MonoBehaviour
         current = null;
         dateScreen.SetActive(false);
         HideChoices();
+        transform.parent.gameObject.GetComponent<DayManager>().RemoveAction();
     }
 
     private void NextDialogue(DialogueNode node)

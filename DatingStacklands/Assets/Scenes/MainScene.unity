@@ -871,6 +871,7 @@ GameObject:
   - component: {fileID: 910436294}
   - component: {fileID: 910436293}
   - component: {fileID: 910436295}
+  - component: {fileID: 910436296}
   m_Layer: 0
   m_Name: Sabrina
   m_TagString: Card
@@ -994,6 +995,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &910436296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910436291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93561663758084cf0a713ebdc381abdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1498592367}
+  a: {fileID: 11400000, guid: 6a76715caa89ef4489c93d2f76409ab7, type: 2}
+  dateCard: {fileID: 1195502287}
 --- !u!1 &1189449849
 GameObject:
   m_ObjectHideFlags: 0
