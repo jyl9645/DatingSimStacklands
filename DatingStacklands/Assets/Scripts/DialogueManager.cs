@@ -74,7 +74,10 @@ public class DialogueManager : MonoBehaviour
 
         foreach (GameObject card in cards)
         {
-            card.SetActive(true);
+            if (card)
+            {
+                card.SetActive(true);
+            }
         }
     }
 
