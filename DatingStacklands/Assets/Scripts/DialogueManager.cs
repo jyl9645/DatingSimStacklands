@@ -72,6 +72,8 @@ public class DialogueManager : MonoBehaviour
         HideChoices();
         GetComponent<DayManager>().RemoveAction();
 
+        cards = GameObject.FindGameObjectsWithTag("Card");
+
         foreach (GameObject card in cards)
         {
             if (card)
