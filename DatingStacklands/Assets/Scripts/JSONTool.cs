@@ -3,10 +3,13 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor.PackageManager.UI;
+using Unity.VisualScripting;
 
 public class JSONTool : MonoBehaviour
 {
     string path;
+
+    static FormulaList setList;
 
     [System.Serializable]
     public class FormulaList
@@ -32,21 +35,32 @@ public class JSONTool : MonoBehaviour
         if (File.Exists(path))
         {
             string jsonDrawn = File.ReadAllText(path);
-            FormulaList flist = JsonUtility.FromJson<FormulaList>(jsonDrawn);
-            foreach (Formula form in flist.list)
-            {
-                foreach (Card.cardType card in form.requirements)
-                {
-                    Debug.Log(card);
-                }
-                Debug.Log(form.result);
-            }
+            setList = JsonUtility.FromJson<FormulaList>(jsonDrawn);
         }
     }
 
-    public void CompareFormulas(Card.cardType[] checkList)
+    public static Card.cardType CompareFormulas(Card[] checkList)
     {
-        
+
+        foreach (Formula formula in setList.list)
+        {
+            if (formula.requirements.Length != checkList.Length) continue;
+            else
+            {
+                foreach (Card card in checkList)
+                {
+                    if (!formula.requirements.Contains(card.GetComponent<Card>().type))
+                    {
+                        break;
+                    }
+
+                    return formula.result;
+                }
+
+            }
+        }
+
+        return Card.cardType.none;
     }
 
     void Start()

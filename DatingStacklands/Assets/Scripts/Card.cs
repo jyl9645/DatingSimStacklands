@@ -1,8 +1,12 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Card : MonoBehaviour
 {
     public cardType type;
+
+    public GameObject progressPrefab;
 
     [System.Serializable]
     public enum cardType
@@ -32,7 +36,9 @@ public class Card : MonoBehaviour
         mallLocation,
         coffeeLocation,
         arenaLocation,
-        restaurantLocation
+        restaurantLocation,
 
+        none
     }
+
 }
