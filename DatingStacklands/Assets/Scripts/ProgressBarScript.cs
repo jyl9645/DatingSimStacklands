@@ -2,15 +2,26 @@ using UnityEngine;
 
 public class ProgressBarScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    float timer = 0f;
+
+    GameObject fillBlock;
+
     void Start()
     {
-        
+        fillBlock = transform.GetChild(0).gameObject;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (timer < 1)
+        {
+            timer += Time.deltaTime;
+            fillBlock.transform.localScale = new Vector3(timer,1,1);
+        }
+        else
+        {
+            transform.parent.GetComponent<Card>().FinishMerge();
+        }
     }
 }
