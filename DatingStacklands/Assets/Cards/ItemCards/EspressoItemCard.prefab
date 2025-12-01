@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 220098643551082846}
   - component: {fileID: 8373593214871264456}
-  - component: {fileID: 500122304714953151}
   - component: {fileID: -9023615489418637229}
+  - component: {fileID: 2148250686352519584}
   m_Layer: 0
   m_Name: EspressoItemCard
   m_TagString: Card
@@ -27,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2788106618683824112}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.79, y: 0.62, z: 0}
-  m_LocalScale: {x: 1.1254233, y: 1.1691966, z: 0.6072209}
+  m_LocalScale: {x: 1.874505, y: 1.7879354, z: 0.6072209}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -727243077338533412, guid: 52600ef936de4684cbc7038b33283ee5, type: 3}
+  m_Sprite: {fileID: 813555460819172943, guid: b18e74a854bbf0b479f361ae3da01daf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,7 +89,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &500122304714953151
+--- !u!114 &-9023615489418637229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788106618683824112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3d9096652ec01946ba5432d67861013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 7
+  progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
+  merging: 0
+  datePossibilities:
+  - {fileID: 7918826204624596828, guid: 53b6da21e0b20b5479aceb779d137498, type: 3}
+  - {fileID: 7918826204624596828, guid: 8995e980957ddc746ac2cc39fb2ae406, type: 3}
+  - {fileID: 7918826204624596828, guid: 84be0754b2438b74ea15404e78900053, type: 3}
+  - {fileID: 7918826204624596828, guid: 51813cf4de2a8464985c9586a3f1cc33, type: 3}
+--- !u!61 &2148250686352519584
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,27 +147,11 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.47, y: 2.33}
+    oldSize: {x: 0.85, y: 1.47}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.47, y: 2.33}
+  m_Size: {x: 0.85, y: 1.47}
   m_EdgeRadius: 0
---- !u!114 &-9023615489418637229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788106618683824112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d9096652ec01946ba5432d67861013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 7
-  progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
-  merging: 0
-  datePossibilities: []

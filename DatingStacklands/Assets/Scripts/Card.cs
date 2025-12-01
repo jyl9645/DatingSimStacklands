@@ -41,10 +41,15 @@ public class Card : MonoBehaviour
         arenaLocation,
         restaurantLocation,
 
+        //misc
+        sabrina,
+        colton,
+        player,
         none
     }
     protected void StartMerge()
     {
+        merging = true;
         Instantiate(progressPrefab, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y + 2), Quaternion.identity, parent:gameObject.transform);
     }
 

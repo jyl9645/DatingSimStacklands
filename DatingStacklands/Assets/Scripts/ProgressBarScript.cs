@@ -22,6 +22,7 @@ public class ProgressBarScript : MonoBehaviour
         else
         {
             transform.parent.GetComponent<Card>().FinishMerge();
+            Destroy(gameObject);
         }
     }
 }
