@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: 6SushiTryQ
+  m_Name: 2KnowInit
   m_EditorClassIdentifier: 
-  speaker: You
+  speaker: Sabrina
   conditionOperator: 0
   condition: 0
   dialogue:
-  - Just give it a try.
+  - Do you even know anything about Asspa?
   sprite:
-  - {fileID: 8766204133149993791, guid: f0471dad4d6a94c2aadf004e7ef3f946, type: 3}
+  - {fileID: 8766204133149993791, guid: 8219b88ba9c5045ae82d3a3e9cf5fe65, type: 3}
   heart_change: 0
   responses:
-  - {fileID: 11400000, guid: 6f3519ca521040441b27e5283f8ba5ab, type: 2}
+  - {fileID: 11400000, guid: 23808d525f5e50b4e955977e34315cb0, type: 2}
+  - {fileID: 11400000, guid: 2928338f8b434734db7589848ed48745, type: 2}
+  - {fileID: 11400000, guid: 06159ea15aaf115438d01679529e8493, type: 2}

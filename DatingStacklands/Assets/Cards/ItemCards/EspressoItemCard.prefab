@@ -104,7 +104,11 @@ MonoBehaviour:
   type: 7
   progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
   merging: 0
-  datePossibilities: []
+  datePossibilities:
+  - {fileID: 7918826204624596828, guid: 53b6da21e0b20b5479aceb779d137498, type: 3}
+  - {fileID: 7918826204624596828, guid: 8995e980957ddc746ac2cc39fb2ae406, type: 3}
+  - {fileID: 7918826204624596828, guid: 84be0754b2438b74ea15404e78900053, type: 3}
+  - {fileID: 7918826204624596828, guid: 51813cf4de2a8464985c9586a3f1cc33, type: 3}
 --- !u!61 &2148250686352519584
 BoxCollider2D:
   m_ObjectHideFlags: 0
