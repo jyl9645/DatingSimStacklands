@@ -74,6 +74,22 @@ public class DialogueManager : MonoBehaviour
         dateScreen.SetActive(true);
         currentLine = 0;
 
+        if (current.conditionOperator == DialogueNode.op.lessthan)
+        {
+            if (dater.GetComponent<Character>().hearts >= current.condition)
+            {
+                current = current.responses[0];
+            }
+        }
+        else if (current.conditionOperator == DialogueNode.op.morethan)
+        {
+            if (dater.GetComponent<Character>().hearts <= current.condition)
+            {
+                current = current.responses[0];
+            }
+            
+        }
+
         dialogueText.text = current.dialogue[currentLine];
         speakerText.text = current.speaker;
         image.sprite = current.sprite[currentLine];
@@ -109,9 +125,20 @@ public class DialogueManager : MonoBehaviour
     {
         current = current.responses[index];
 
-        while (dater.GetComponent<Character>().hearts < current.condition)
+        if (current.conditionOperator == DialogueNode.op.lessthan)
         {
-            current = current.responses[0];
+            if (dater.GetComponent<Character>().hearts >= current.condition)
+            {
+                current = current.responses[0];
+            }
+        }
+        else if (current.conditionOperator == DialogueNode.op.morethan)
+        {
+            if (dater.GetComponent<Character>().hearts <= current.condition)
+            {
+                current = current.responses[0];
+            }
+            
         }
 
         currentLine = 0;

@@ -10,14 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: PhoneRotQYes
+  m_Name: 3InterestingInitial
   m_EditorClassIdentifier: 
-  speaker: You
+  speaker: Sabrina
+  conditionOperator: 0
   condition: 0
   dialogue:
-  - Yeah.
+  - "Ugh\u2026so what\u2019s so interesting about all of this nerdy junk?"
   sprite:
   - {fileID: 8766204133149993791, guid: 3665144cdeadc44c9a21432d806e00ff, type: 3}
   heart_change: 0
   responses:
-  - {fileID: 11400000, guid: c747a6be7be5f544eb89567e26d2c3f5, type: 2}
+  - {fileID: 11400000, guid: 804b65d2b04bf6b4fb5a6fc50becca6f, type: 2}
+  - {fileID: 11400000, guid: fe08bf904ec9a274c87b721e6831f028, type: 2}
+  - {fileID: 11400000, guid: bb108019d40c9fe4c99a49e2cf032f6e, type: 2}

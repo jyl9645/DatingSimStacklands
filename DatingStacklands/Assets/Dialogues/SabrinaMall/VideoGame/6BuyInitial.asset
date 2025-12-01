@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: PhoneRotRYes
+  m_Name: 6BuyInitial
   m_EditorClassIdentifier: 
   speaker: Sabrina
+  conditionOperator: 0
   condition: 0
   dialogue:
-  - Oh.
-  - I didn't expect you to actually admit it.
+  - So what are we even buying here?
   sprite:
   - {fileID: 8766204133149993791, guid: f0471dad4d6a94c2aadf004e7ef3f946, type: 3}
-  - {fileID: 8766204133149993791, guid: 3665144cdeadc44c9a21432d806e00ff, type: 3}
-  heart_change: -2
-  responses: []
+  heart_change: 0
+  responses:
+  - {fileID: 11400000, guid: de6cba3084c644b4db57874c4a305631, type: 2}
+  - {fileID: 11400000, guid: 482e9b0036020a34b981a937db54e7e7, type: 2}
