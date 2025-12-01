@@ -6,11 +6,10 @@ using UnityEngine;
 public class DialogueNode : ScriptableObject
 {
     public String speaker;
-    public String dialogue;
-    public Sprite sprite;
+    public int condition;
+    public String[] dialogue;
+    public Sprite[] sprite;
     public float heart_change;
     public List<DialogueNode> responses = new List<DialogueNode>();
-
-    public bool[] conditions;   
 
 }

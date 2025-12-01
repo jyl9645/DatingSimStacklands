@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -9023615489418637229}
   - component: {fileID: 2148250686352519584}
   m_Layer: 0
-  m_Name: EspressoItemCard
+  m_Name: CakeItemCard
   m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 813555460819172943, guid: b18e74a854bbf0b479f361ae3da01daf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9764706, g: 0.41643426, b: 0.36078426, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d9096652ec01946ba5432d67861013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 7
+  type: 8
   progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
   merging: 0
   datePossibilities: []

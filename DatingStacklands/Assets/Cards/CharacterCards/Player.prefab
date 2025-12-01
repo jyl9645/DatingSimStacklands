@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2788106618683824112
+--- !u!1 &7989283400837029317
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 220098643551082846}
-  - component: {fileID: 8373593214871264456}
-  - component: {fileID: -9023615489418637229}
-  - component: {fileID: 2148250686352519584}
+  - component: {fileID: 3887805705542602804}
+  - component: {fileID: 4702180540385940305}
+  - component: {fileID: 6666287656539675097}
+  - component: {fileID: 1662049313571667811}
   m_Layer: 0
-  m_Name: EspressoItemCard
+  m_Name: Player
   m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &220098643551082846
+--- !u!4 &3887805705542602804
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788106618683824112}
+  m_GameObject: {fileID: 7989283400837029317}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.79, y: 0.62, z: 0}
-  m_LocalScale: {x: 1.874505, y: 1.7879354, z: 0.6072209}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.53, y: 1.4, z: 0}
+  m_LocalScale: {x: 1.1254233, y: 1.1691966, z: 0.6072209}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8373593214871264456
+--- !u!212 &4702180540385940305
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788106618683824112}
+  m_GameObject: {fileID: 7989283400837029317}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,40 +78,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 813555460819172943, guid: b18e74a854bbf0b479f361ae3da01daf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 7468179793162164299, guid: 66fcd46df29ada64dab86e803c3997b8, type: 3}
+  m_Color: {r: 1, g: 0.89293134, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9023615489418637229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788106618683824112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3d9096652ec01946ba5432d67861013, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 7
-  progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
-  merging: 0
-  datePossibilities: []
---- !u!61 &2148250686352519584
+--- !u!61 &6666287656539675097
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788106618683824112}
+  m_GameObject: {fileID: 7989283400837029317}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -143,11 +127,32 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.85, y: 1.47}
-    newSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1.43, y: 2.27}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.85, y: 1.47}
+  m_Size: {x: 1.43, y: 2.27}
   m_EdgeRadius: 0
+--- !u!114 &1662049313571667811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7989283400837029317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cccb4124e56e4735a2688ceefd991cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 21
+  progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
+  merging: 0
+  gameManager: {fileID: 0}
+  hearts: 1
+  mallDialogue: {fileID: 0}
+  coffeeDialogue: {fileID: 0}
+  arenaDialogue: {fileID: 0}
+  restaurantDialogue: {fileID: 0}

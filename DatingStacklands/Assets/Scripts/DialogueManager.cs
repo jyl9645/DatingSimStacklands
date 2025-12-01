@@ -1,24 +1,32 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Diagnostics;
 
 public class DialogueManager : MonoBehaviour
 {
+    //Parent for date dialogue UI
     public GameObject dateScreen;
 
+    //Gameobjects of date dialogue
     public GameObject dialoguePanel;
     public GameObject[] choicePanels;
     public TMP_Text speakerText;
     public Image image;
 
+    //text of dialogue box
     private TMP_Text dialogueText;
 
+    //current node
     public DialogueNode current;
+    //current line of node
+    public int currentLine;
+    //current character
+    public GameObject dater;
 
+    //bools to check date status
     public bool onDate;
     private bool isChoosing;
-
-    private GameObject[] cards;
 
     void Start()
     {
@@ -29,13 +37,18 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (onDate)
+        if (onDate && Input.GetMouseButtonDown(0) && !isChoosing)
         {
-            if (Input.GetMouseButtonDown(0) && !isChoosing)
+            //if there is more dialogue lines to go in the node
+            if (currentLine + 1 < current.dialogue.Length)
+            {
+                NextLine();
+            }
+            else
             {
                 if (current.responses.Count == 1)
                 {
-                    NextDialogue(current.responses[0]);
+                    NextDialogueNode(0);
                 }
                 else if (current.responses.Count > 1)
                 {
@@ -49,16 +62,20 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void InitiateDialogue(DialogueNode root)
+    public void InitiateDialogue(DialogueNode root, GameObject datee)
     {
+        dater = datee;
         onDate = true;
         current = root;
         dateScreen.SetActive(true);
-        NextDialogue(current);
+        currentLine = 0;
 
-        cards = GameObject.FindGameObjectsWithTag("Card");
+        dialogueText.text = current.dialogue[currentLine];
+        speakerText.text = current.speaker;
+        image.sprite = current.sprite[currentLine];
 
-        foreach (GameObject card in cards)
+
+        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
         {
             card.SetActive(false);
         }
@@ -72,9 +89,7 @@ public class DialogueManager : MonoBehaviour
         HideChoices();
         GetComponent<DayManager>().RemoveAction();
 
-        cards = GameObject.FindGameObjectsWithTag("Card");
-
-        foreach (GameObject card in cards)
+        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
         {
             if (card)
             {
@@ -83,23 +98,37 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void NextDialogue(DialogueNode node)
+    private void NextDialogueNode(int index)
     {
-        current = node;
-
-        image.sprite = current.sprite;
-        speakerText.text = current.speaker;
-        dialogueText.text = current.dialogue;
-    }
-
-    public void NextIndexDialogue(int index)
-    {
-        HideChoices();
         current = current.responses[index];
 
-        image.sprite = current.sprite;
+        while (dater.GetComponent<Character>().hearts < current.condition)
+        {
+            current = current.responses[0];
+        }
+
+        currentLine = 0;
+        
+        dialogueText.text = current.dialogue[currentLine];
         speakerText.text = current.speaker;
-        dialogueText.text = current.dialogue;
+        image.sprite = current.sprite[currentLine];
+        dater.GetComponent<Character>().ChangeHearts(current.heart_change);
+    }
+
+    private void NextLine()
+    {
+        currentLine ++;
+
+        dialogueText.text = current.dialogue[currentLine];
+        speakerText.text = current.speaker;
+        image.sprite = current.sprite[currentLine];
+    }
+
+    public void NextIndexDialogueNode(int index)
+    {
+        HideChoices();
+        
+        NextDialogueNode(index);
     }
 
     private void ShowChoices()
@@ -107,7 +136,7 @@ public class DialogueManager : MonoBehaviour
         for (var i = 0; i < current.responses.Count; i++)
         {
             choicePanels[i].SetActive(true);
-            choicePanels[i].GetComponentInChildren<TMP_Text>().text = current.responses[i].dialogue;
+            choicePanels[i].GetComponentInChildren<TMP_Text>().text = current.responses[i].dialogue[0];
         }
 
         isChoosing = true;

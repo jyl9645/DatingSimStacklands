@@ -26,7 +26,7 @@ public class CombineScript : MonoBehaviour
                     if (!gameManager.GetComponent<DialogueManager>().onDate)
                     {
                         timer = timerDefault;
-                        gameManager.GetComponent<DialogueManager>().InitiateDialogue(a);
+                        ///gameManager.GetComponent<DialogueManager>().InitiateDialogue(a);
                         Destroy(card);
                     }
                        
