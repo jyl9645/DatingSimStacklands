@@ -14,7 +14,7 @@ public class Character: Card
 
     void Update()
     {
-        if (transform.childCount != 0)
+        if (transform.childCount != 0 && !merging)
         {
             StartMerge();
         }
@@ -49,6 +49,8 @@ public class Character: Card
                 break;
         }
 
+        stacked.transform.parent = null;
+        merging = false;
         Destroy(stacked);
 
     }

@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] choicePanels;
     public TMP_Text speakerText;
     public Image image;
+    public TMP_Text heartCounter;
 
     //text of dialogue box
     private TMP_Text dialogueText;
@@ -25,8 +26,11 @@ public class DialogueManager : MonoBehaviour
     public GameObject dater;
 
     //bools to check date status
-    public bool onDate;
+    public static bool onDate;
     private bool isChoosing;
+
+    //array of saved cards to show after dialogue
+    private GameObject[] cards;
 
     void Start()
     {
@@ -73,10 +77,13 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = current.dialogue[currentLine];
         speakerText.text = current.speaker;
         image.sprite = current.sprite[currentLine];
+        heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
 
+        cards = GameObject.FindGameObjectsWithTag("Card");
 
-        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
+        foreach (GameObject card in cards)
         {
+            print(card);
             card.SetActive(false);
         }
     }
@@ -89,7 +96,7 @@ public class DialogueManager : MonoBehaviour
         HideChoices();
         GetComponent<DayManager>().RemoveAction();
 
-        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
+        foreach (GameObject card in cards)
         {
             if (card)
             {
@@ -112,7 +119,9 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = current.dialogue[currentLine];
         speakerText.text = current.speaker;
         image.sprite = current.sprite[currentLine];
+
         dater.GetComponent<Character>().ChangeHearts(current.heart_change);
+        heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
     }
 
     private void NextLine()
