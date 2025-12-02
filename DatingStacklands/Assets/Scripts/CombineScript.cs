@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CombineScript : MonoBehaviour
 {
+    private float timerDefault = 1f;
     private float timer = 1f;
     public GameObject gameManager;
 
@@ -20,9 +21,15 @@ public class CombineScript : MonoBehaviour
             else
             {
                 GameObject card = transform.GetChild(0).gameObject;
-                if (card == dateCard)
+                if (card.GetComponent<Card>().type == Card.cardType.mallDate)
                 {
-                       gameManager.GetComponent<DialogueManager>().InitiateDialogue(a);
+                    //if (!gameManager.GetComponent<DialogueManager>().onDate)
+                    //{
+                    //    timer = timerDefault;
+                    //    ///gameManager.GetComponent<DialogueManager>().InitiateDialogue(a);
+                    //    Destroy(card);
+                    //}
+                       
                 }
             }
         }
