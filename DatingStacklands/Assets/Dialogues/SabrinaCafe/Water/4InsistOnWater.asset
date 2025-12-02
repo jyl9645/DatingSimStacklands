@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: VideoGameChoice
+  m_Name: 4InsistOnWater
   m_EditorClassIdentifier: 
   speaker: You
   conditionOperator: 0
   condition: 0
   dialogue:
-  - Video Game Store!
+  - I insist on water.
   sprite:
   - {fileID: 8766204133149993791, guid: fe290ddaac09448dd89e90b2e470ecac, type: 3}
   heart_change: 0
-  responses:
-  - {fileID: 11400000, guid: 455b1df58a251ff4c8ff16d52a42c9d7, type: 2}
+  responses: []

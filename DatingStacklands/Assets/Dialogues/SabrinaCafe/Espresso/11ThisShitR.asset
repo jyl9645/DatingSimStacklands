@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
+  m_Name: 11ThisShitR
+  m_EditorClassIdentifier: 
+  speaker: Sabrina
+  conditionOperator: 0
+  condition: 0
+  dialogue:
+  - You have bad tastes.
+  - This is clearly the superior coffee than that energy drink you always have.
+  - Yeah, surprised I even pay attention to you?
+  - You should be.
+  - "I\u2019m a very observant person."
+  sprite:
+  - {fileID: 8766204133149993791, guid: fe290ddaac09448dd89e90b2e470ecac, type: 3}
+  - {fileID: 8766204133149993791, guid: f0471dad4d6a94c2aadf004e7ef3f946, type: 3}
+  - {fileID: 245999297116322372, guid: 9dbd89cf737554e80b1a4aea58ef0ae0, type: 3}
+  - {fileID: 8766204133149993791, guid: fe290ddaac09448dd89e90b2e470ecac, type: 3}
+  - {fileID: 8766204133149993791, guid: 3665144cdeadc44c9a21432d806e00ff, type: 3}
+  heart_change: -1
+  responses:
+  - {fileID: 11400000, guid: e3c7cfe7157ec184bab9d87243c1a102, type: 2}
+  - {fileID: 11400000, guid: b6f1ea7179ee7fe47bd12b901050b4b6, type: 2}
