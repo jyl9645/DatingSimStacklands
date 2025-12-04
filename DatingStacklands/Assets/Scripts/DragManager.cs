@@ -24,7 +24,10 @@ public class DragManager : MonoBehaviour
                 
                 if (currentDrag.transform.parent)
                 {
-                    currentDrag.transform.parent.DetachChildren();
+                    foreach (Card cardChild in currentDrag.GetComponentsInChildren<Card>())
+                    {
+                        cardChild.gameObject.transform.parent = null;
+                    }
                     currentDrag.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 }
                 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3887805705542602804}
   - component: {fileID: 4702180540385940305}
   - component: {fileID: 6666287656539675097}
-  - component: {fileID: 1662049313571667811}
+  - component: {fileID: 7448298432983389386}
   m_Layer: 0
   m_Name: Player
   m_TagString: Card
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7989283400837029317}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.53, y: 1.4, z: 0}
   m_LocalScale: {x: 1.1254233, y: 1.1691966, z: 0.6072209}
   m_ConstrainProportionsScale: 0
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.43, y: 2.27}
   m_EdgeRadius: 0
---- !u!114 &1662049313571667811
+--- !u!114 &7448298432983389386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,15 +144,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7989283400837029317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cccb4124e56e4735a2688ceefd991cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1105c892839b3694c826f91ab507fd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   type: 21
   progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
   merging: 0
-  gameManager: {fileID: 0}
-  hearts: 1
-  mallDialogue: {fileID: 0}
-  coffeeDialogue: {fileID: 0}
-  arenaDialogue: {fileID: 0}
-  restaurantDialogue: {fileID: 0}
