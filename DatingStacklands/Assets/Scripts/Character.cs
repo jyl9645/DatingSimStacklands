@@ -29,29 +29,48 @@ public class Character: Card
         }
     }
 
+    private bool isDateCard(cardType cardtype)
+    {
+        if (cardtype != cardType.mallDate && cardtype != cardType.coffeeDate && cardtype != cardType.arenaDate && cardtype != cardType.restaurantDate)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public override void FinishMerge()
     {
         GameObject stacked = transform.GetChild(0).gameObject;
         cardType stackedType = stacked.GetComponent<Card>().type;
-        switch (stackedType)
+
+        if (isDateCard(stackedType))
         {
-            case cardType.mallDate:
-                gameManager.GetComponent<DialogueManager>().InitiateDialogue(mallDialogue, gameObject);
-                break;
-            case cardType.coffeeDate:
-                gameManager.GetComponent<DialogueManager>().InitiateDialogue(coffeeDialogue, gameObject);
-                break;
-            case cardType.arenaDate:
-                gameManager.GetComponent<DialogueManager>().InitiateDialogue(arenaDialogue, gameObject);
-                break;
-            case cardType.restaurantDate:
-                gameManager.GetComponent<DialogueManager>().InitiateDialogue(restaurantDialogue, gameObject);
-                break;
+            switch (stackedType)
+            {
+                case cardType.mallDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(mallDialogue, gameObject);
+                    break;
+                case cardType.coffeeDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(coffeeDialogue, gameObject);
+                    break;
+                case cardType.arenaDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(arenaDialogue, gameObject);
+                    break;
+                case cardType.restaurantDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(restaurantDialogue, gameObject);
+                    break;
+            }
+            stacked.transform.parent = null;
+            merging = false;
+            Destroy(stacked);
+
         }
 
-        stacked.transform.parent = null;
-        merging = false;
-        Destroy(stacked);
+        else
+        {
+            stacked.transform.parent = null;
+            merging = false;
+        }
 
     }
 } 

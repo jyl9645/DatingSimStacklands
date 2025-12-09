@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEditor.PackageManager.UI;
 using Unity.VisualScripting;
+using System;
 
 public class JSONTool : MonoBehaviour
 {
@@ -41,20 +42,27 @@ public class JSONTool : MonoBehaviour
 
     public static Card.cardType CompareFormulas(Card[] checkList)
     {
+        Card.cardType resultingCard = Card.cardType.none;
 
         foreach (Formula formula in setList.list)
         {
             if (formula.requirements.Length != checkList.Length) continue;
             else
             {
+                resultingCard = formula.result;
+
                 foreach (Card card in checkList)
                 {
                     if (!formula.requirements.Contains(card.GetComponent<Card>().type))
                     {
-                        break;
+                        print("no");
+                        resultingCard = Card.cardType.none;
                     }
+                }
 
-                    return formula.result;
+                if (resultingCard != Card.cardType.none)
+                {
+                    return resultingCard;
                 }
 
             }
@@ -68,24 +76,26 @@ public class JSONTool : MonoBehaviour
         path = Application.persistentDataPath + "/formula.json";
 
         //THIS CODE IS FOR OVERWRITING THE JSON FILE; JSON HAS ALREADY BEEN SET SO WE DON'T HAVE TO KEEP RUNNING THIS EVERY START
+        if (!File.Exists(path))
+        {
+            Formula[] formulaArray = new Formula[]
+            {
+               new Formula {requirements = new Card.cardType[] {Card.cardType.vinylItem, Card.cardType.espressoItem}, result = Card.cardType.coffeeDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.clothesItem, Card.cardType.magazineItem}, result = Card.cardType.mallDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.pretzelsItem, Card.cardType.ticketItem}, result = Card.cardType.arenaDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.flowersItem, Card.cardType.cakeItem}, result = Card.cardType.restaurantDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.magazineItem, Card.cardType.ticketItem}, result = Card.cardType.mallDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.cakeItem, Card.cardType.magazineItem}, result = Card.cardType.coffeeDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.ticketItem, Card.cardType.clothesItem}, result = Card.cardType.arenaDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.vinylItem, Card.cardType.ticketItem}, result = Card.cardType.arenaDate} 
+            };
 
-        //Formula[] formulaArray = new Formula[]
-        //{
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.vinylItem, Card.cardType.espressoItem}, result = Card.cardType.coffeeDate},
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.clothesItem, Card.cardType.magazineItem}, result = Card.cardType.mallDate},
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.pretzelsItem, Card.cardType.ticketItem}, result = Card.cardType.arenaDate},
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.flowersItem, Card.cardType.cakeItem}, result = Card.cardType.restaurantDate},
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.magazineItem, Card.cardType.ticketItem}, result = Card.cardType.mallDate},
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.cakeItem, Card.cardType.magazineItem}, result = Card.cardType.coffeeDate},
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.ticketItem, Card.cardType.clothesItem}, result = Card.cardType.arenaDate},
-        //   new Formula {requirements = new Card.cardType[] {Card.cardType.vinylItem, Card.cardType.ticketItem}, result = Card.cardType.arenaDate} 
-        //};
-//
-        //FormulaList sampleList = new FormulaList();
-        //sampleList.list = formulaArray;
-//
-        //SaveToJson(sampleList);
-        
+            FormulaList sampleList = new FormulaList();
+            sampleList.list = formulaArray;
+
+            SaveToJson(sampleList);
+        }
+
         ReadFromJson();
 
     }

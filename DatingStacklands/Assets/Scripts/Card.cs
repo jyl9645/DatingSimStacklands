@@ -47,6 +47,7 @@ public class Card : MonoBehaviour
         player,
         none
     }
+    
     protected void StartMerge()
     {
         merging = true;

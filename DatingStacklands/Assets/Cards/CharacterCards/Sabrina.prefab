@@ -27,10 +27,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5929615776812477243}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.6770034, y: 0.07249254, z: 0}
-  m_LocalScale: {x: 1.1254233, y: 1.1691966, z: 0.6072209}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.25, y: 0.25972375, z: 0.13488722}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7468179793162164299, guid: 66fcd46df29ada64dab86e803c3997b8, type: 3}
+  m_Sprite: {fileID: -7170249800520869216, guid: ef8254bfa97764505abdb42191cd03a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,7 +127,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.43, y: 2.27}
+    oldSize: {x: 6.84, y: 9.9}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   merging: 0
   gameManager: {fileID: 0}
   hearts: 4
-  mallDialogue: {fileID: 11400000, guid: b6dc161a0a18ff946b01745299606f3a, type: 2}
-  coffeeDialogue: {fileID: 0}
-  arenaDialogue: {fileID: 0}
+  mallDialogue: {fileID: 11400000, guid: 3e4d785968e52164c9b598d5da14d778, type: 2}
+  coffeeDialogue: {fileID: 11400000, guid: 1ade8fd290574e14089d1a259538f883, type: 2}
+  arenaDialogue: {fileID: 11400000, guid: 1f6ba2b10ebb0994aa238e331d886de5, type: 2}
   restaurantDialogue: {fileID: 0}

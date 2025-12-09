@@ -1,3 +1,4 @@
+using System.Threading;
 using NUnit.Framework.Interfaces;
 using Unity.Mathematics;
 using UnityEngine;
@@ -14,12 +15,17 @@ public class ItemCard : Card
         {
             if (transform.childCount != 0 && merging == false)
             {
-                Card[] childrenCards = GetComponentsInChildren<Card>();
-                cardType possibleResult = JSONTool.CompareFormulas(childrenCards);
+                Card[] allCards = GetComponentsInChildren<Card>();
+
+                foreach (Card card in allCards)
+                {
+                    print(card);
+                }
+
+                cardType possibleResult = JSONTool.CompareFormulas(allCards);
 
                 if (possibleResult != cardType.none)
                 {
-                    print("merging");
                     result = possibleResult;
                     StartMerge();
                     merging = true;
