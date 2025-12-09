@@ -5,6 +5,8 @@ public class Character: Card
     public GameObject gameManager;
 
     public float hearts = 4;
+    public GameObject heartContainer;
+    public GameObject heartPrefab;
 
     //dialogues
     public DialogueNode mallDialogue;
@@ -22,12 +24,32 @@ public class Character: Card
 
     public void ChangeHearts(float change)
     {
-        hearts += change;
-        if (hearts <= 0)
+        if (change < 0)
         {
-            // code late, end game
+            for (int i = 0; i < Mathf.Abs(change); i++)
+            {
+                hearts --;
+                Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1));
+                if (hearts <= 0)
+                {
+                    //gameover
+                }
+            }
+        }
+
+        else if (change > 0)
+        {
+            for (int i = 0; i < Mathf.Abs(change); i++)
+            {
+                if (hearts + 1 <= 10)
+                {
+                    hearts ++;
+                    Instantiate(heartPrefab, parent: heartContainer.transform);
+                }
+            }
         }
     }
+
 
     private bool isDateCard(cardType cardtype)
     {
@@ -73,4 +95,5 @@ public class Character: Card
         }
 
     }
+    
 } 
