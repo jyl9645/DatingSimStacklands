@@ -40,7 +40,7 @@ public class DayManager : MonoBehaviour
 
     private void NextDay()
     {
-        if (day < 7)
+        if (day < 4)
         {
             day ++;
             dayText.text = "Day " + day;

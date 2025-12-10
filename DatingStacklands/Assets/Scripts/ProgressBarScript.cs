@@ -14,6 +14,13 @@ public class ProgressBarScript : MonoBehaviour
 
     void Update()
     {
+
+        if (transform.parent.childCount == 1)
+        {
+            transform.parent.GetComponent<Card>().merging = false;
+            Destroy(gameObject);
+        }
+
         if (timer < 1)
         {
             timer += Time.deltaTime;

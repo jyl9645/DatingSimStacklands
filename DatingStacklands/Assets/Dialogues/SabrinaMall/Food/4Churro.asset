@@ -17,9 +17,11 @@ MonoBehaviour:
   condition: 0
   dialogue:
   - "Hmm\u2026I was thinking the same. "
+  - '*takes a crunchy bite out of the churro*'
   - "Mmm\u2026 I loveeee churros\u2026 "
   sprite:
   - {fileID: 8766204133149993791, guid: 8219b88ba9c5045ae82d3a3e9cf5fe65, type: 3}
+  - {fileID: 245999297116322372, guid: 9dbd89cf737554e80b1a4aea58ef0ae0, type: 3}
   - {fileID: 245999297116322372, guid: 9dbd89cf737554e80b1a4aea58ef0ae0, type: 3}
   heart_change: 1
   responses:
