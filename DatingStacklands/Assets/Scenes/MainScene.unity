@@ -301,7 +301,7 @@ MonoBehaviour:
   Lens:
     FieldOfView: 60
     OrthographicSize: 5
-    NearClipPlane: 0.01
+    NearClipPlane: -0.83
     FarClipPlane: 1000
     Dutch: 0
     ModeOverride: 0
@@ -1210,7 +1210,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
+  near clip plane: -0.83
   far clip plane: 1000
   field of view: 60
   orthographic: 1
@@ -1918,7 +1918,7 @@ MonoBehaviour:
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 14
+  m_fontSizeMin: 10
   m_fontSizeMax: 28
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 35.763535, y: 39.01482, z: 37.38942, w: 39.82765}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2187,7 +2187,7 @@ MonoBehaviour:
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 14
+  m_fontSizeMin: 10
   m_fontSizeMax: 28
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -2221,7 +2221,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 36.57634, y: 38.202038, z: 36.576675, w: 39.01477}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3069,7 +3069,7 @@ MonoBehaviour:
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 14
+  m_fontSizeMin: 10
   m_fontSizeMax: 28
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -3103,7 +3103,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 36.576324, y: 39.014816, z: 35.763535, w: 40.640415}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3775,7 +3775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1906616856
 RectTransform:
   m_ObjectHideFlags: 0
