@@ -157,4 +157,9 @@ MonoBehaviour:
   mallDialogue: {fileID: 11400000, guid: 3e4d785968e52164c9b598d5da14d778, type: 2}
   coffeeDialogue: {fileID: 11400000, guid: 1ade8fd290574e14089d1a259538f883, type: 2}
   arenaDialogue: {fileID: 11400000, guid: 1f6ba2b10ebb0994aa238e331d886de5, type: 2}
-  restaurantDialogue: {fileID: 0}
+  restaurantDialogue: {fileID: 11400000, guid: da68e7575d5194c4a91ad691864a9691, type: 2}
+  bkObject: {fileID: 0}
+  mallBK: {fileID: -6222199842612748360, guid: 2b9c64904bccb4d61811ce408cd32b52, type: 3}
+  restaurantBK: {fileID: 1743042968524630086, guid: 6cc8e44a3929c488a8009232703d44fd, type: 3}
+  cafeBK: {fileID: -5156536942637591608, guid: 72621076d068243d1b42fad7f04664e1, type: 3}
+  stadiumBK: {fileID: 6388408094842302680, guid: 97b5fe6f5192c402badf77ad89da923f, type: 3}

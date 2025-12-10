@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject[] choicePanels;
     
     public Image dialogueBox;
+    public Image background;
 
     public Image image;
     public TMP_Text heartCounter;
@@ -40,11 +41,23 @@ public class DialogueManager : MonoBehaviour
     public Sprite playerBox;
     public Sprite noBox;
 
+    public Sprite defaultSprite;
+
+    //tutorial/start stuff
+    public DialogueNode startDialogue;
+    public GameObject sabrinaObject;
+    public Sprite busBK;
+
+
     void Start()
     {
         dialogueText = dialoguePanel.GetComponentInChildren<TMP_Text>();
 
-        CloseDialogue();
+        HideChoices();
+
+        InitiateDialogue(startDialogue, sabrinaObject);
+        background.sprite = busBK;
+        
     }
 
     void Update()
@@ -89,9 +102,9 @@ public class DialogueManager : MonoBehaviour
                 current = current.responses[0];
             }
         }
-        else if (current.conditionOperator == DialogueNode.op.morethan)
+        if (current.conditionOperator == DialogueNode.op.morethan)
         {
-            if (dater.GetComponent<Character>().hearts <= current.condition)
+            if (dater.GetComponent<Character>().hearts < current.condition)
             {
                 current = current.responses[0];
             }
@@ -100,7 +113,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = current.dialogue[currentLine];
         ChangeDialogueBox(current.speaker);
-        image.sprite = current.sprite[currentLine];
+        ChangeCharImage(current.sprite[currentLine]);
         heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
 
         cards = GameObject.FindGameObjectsWithTag("Card");
@@ -137,14 +150,14 @@ public class DialogueManager : MonoBehaviour
         {
             if (dater.GetComponent<Character>().hearts >= current.condition)
             {
-                current = current.responses[0];
+                NextDialogueNode(0);
             }
         }
         else if (current.conditionOperator == DialogueNode.op.morethan)
         {
-            if (dater.GetComponent<Character>().hearts <= current.condition)
+            if (dater.GetComponent<Character>().hearts < current.condition)
             {
-                current = current.responses[0];
+                NextDialogueNode(0);
             }
             
         }
@@ -153,7 +166,7 @@ public class DialogueManager : MonoBehaviour
         
         dialogueText.text = current.dialogue[currentLine];
         ChangeDialogueBox(current.speaker);
-        image.sprite = current.sprite[currentLine];
+        ChangeCharImage(current.sprite[currentLine]);
 
         dater.GetComponent<Character>().ChangeHearts(current.heart_change);
         heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
@@ -165,7 +178,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = current.dialogue[currentLine];
         ChangeDialogueBox(current.speaker);
-        image.sprite = current.sprite[currentLine];
+        ChangeCharImage(current.sprite[currentLine]);
     }
 
     public void NextIndexDialogueNode(int index)
@@ -207,7 +220,6 @@ public class DialogueManager : MonoBehaviour
 
     private void ChangeDialogueBox(String name)
     {
-        print(name);
         if (name == "Sabrina")
         {
             dialogueBox.sprite = sabrinaBox;
@@ -222,4 +234,15 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void ChangeCharImage(Sprite sprite)
+    {
+        if (sprite == null)
+        {
+            image.sprite = defaultSprite;
+        }
+        else
+        {
+            image.sprite = sprite;
+        }
+    }
 }

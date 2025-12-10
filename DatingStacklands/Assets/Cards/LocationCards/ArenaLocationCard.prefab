@@ -155,3 +155,4 @@ MonoBehaviour:
   itemPool:
   - {fileID: 2788106618683824112, guid: f1b8de6006437004cac5a9c8a175edf8, type: 3}
   - {fileID: 2788106618683824112, guid: 149b1f3f10de4f14bb390200fb4de13f, type: 3}
+  - {fileID: 2788106618683824112, guid: 530f33b16b5d0a54d85bb034facc1fb9, type: 3}

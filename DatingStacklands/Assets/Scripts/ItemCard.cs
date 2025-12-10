@@ -8,6 +8,7 @@ public class ItemCard : Card
 {
     cardType result;
     public GameObject[] datePossibilities; 
+    public static bool tutMerged;
 
     void Update()
     {
@@ -36,7 +37,11 @@ public class ItemCard : Card
 
     public override void FinishMerge()
     {
-        print(result);
+        if (!tutMerged)
+        {
+            tutMerged = true;
+            EventScript.merged = true;
+        }
         switch (result)
         {
             case cardType.mallDate:
