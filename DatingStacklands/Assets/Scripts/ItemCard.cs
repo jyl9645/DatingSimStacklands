@@ -1,5 +1,6 @@
 using System.Threading;
 using NUnit.Framework.Interfaces;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,6 +11,10 @@ public class ItemCard : Card
     public GameObject[] datePossibilities; 
     public static bool tutMerged;
 
+    //
+    public GameObject tutorialTextPanel;
+    public TMP_Text tutorialText;
+
     void Update()
     {
         if (!transform.parent)
@@ -18,11 +23,6 @@ public class ItemCard : Card
             {
                 Card[] allCards = GetComponentsInChildren<Card>();
 
-                foreach (Card card in allCards)
-                {
-                    print(card);
-                }
-
                 cardType possibleResult = JSONTool.CompareFormulas(allCards);
 
                 if (possibleResult != cardType.none)
@@ -30,6 +30,7 @@ public class ItemCard : Card
                     result = possibleResult;
                     StartMerge();
                     merging = true;
+                    return;
                 }
             }
         }

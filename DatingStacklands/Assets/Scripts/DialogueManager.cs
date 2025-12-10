@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -48,6 +49,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject sabrinaObject;
     public Sprite busBK;
 
+    //animator
+    public Animator camAnim;
 
     void Start()
     {
@@ -81,7 +84,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    CloseDialogue();
+                    camAnim.SetTrigger("Transit");
                 }
             }
         }
@@ -127,19 +130,19 @@ public class DialogueManager : MonoBehaviour
 
     public void CloseDialogue()
     {
-        onDate = false;
-        current = null;
-        dateScreen.SetActive(false);
-        HideChoices();
-        GetComponent<DayManager>().RemoveAction();
+       onDate = false;
+       current = null;
+       dateScreen.SetActive(false);
+       HideChoices();
+       GetComponent<DayManager>().RemoveAction();
 
-        foreach (GameObject card in cards)
-        {
-            if (card)
-            {
-                card.SetActive(true);
-            }
-        }
+       foreach (GameObject card in cards)
+       {
+           if (card)
+           {
+               card.SetActive(true);
+           }
+       }
     }
 
     private void NextDialogueNode(int index)

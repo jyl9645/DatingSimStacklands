@@ -1,5 +1,7 @@
 using NUnit.Framework.Constraints;
 using TMPro;
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,8 +37,11 @@ public class EventScript : MonoBehaviour
     public static bool merged;
 
     //tutorial vars
-    DialogueNode tutorialCurrent;
-    int currentTutLine;
+    public static DialogueNode tutorialCurrent;
+    public static int currentTutLine;
+
+    //cam animator
+    public Animator camAnimator;
 
     void Start()
     {
@@ -64,36 +69,25 @@ public class EventScript : MonoBehaviour
 
         if (dialogueManager.current == getOffNode)
         {
-            dialogueManager.CloseDialogue();
+            camAnimator.SetTrigger("Transit");
             
-            tutorialCurrent = locationTutNode;
-            currentTutLine = 0;
-
-            tutorialTextPanel.SetActive(true);
-            tutorialText.text = tutorialCurrent.dialogue[currentTutLine];
+            ResetTutorialBox(locationTutNode);
 
         }
 
         else if (drawn)
         {
-            tutorialCurrent = mergeTutNode;
-            currentTutLine = 0;
-
-            tutorialTextPanel.SetActive(true);
-            tutorialText.text = tutorialCurrent.dialogue[currentTutLine];
+            ResetTutorialBox(mergeTutNode);
 
             drawn = false;
         }
 
         else if (merged)
         {
-            tutorialCurrent = giftTutNode;
-            currentTutLine = 0;
-
-            tutorialTextPanel.SetActive(true);
-            tutorialText.text = tutorialCurrent.dialogue[currentTutLine];
+            ResetTutorialBox(giftTutNode);
 
             merged = false;
+
         }
 
         //ending stuff
@@ -109,5 +103,14 @@ public class EventScript : MonoBehaviour
         {
             SceneManager.LoadScene("GoodEnd");
         }
+    }
+
+    private void ResetTutorialBox(DialogueNode startNode)
+    {
+        tutorialCurrent = startNode;
+        currentTutLine = 0;
+
+        tutorialTextPanel.SetActive(true);
+        tutorialText.text = tutorialCurrent.dialogue[currentTutLine];
     }
 }

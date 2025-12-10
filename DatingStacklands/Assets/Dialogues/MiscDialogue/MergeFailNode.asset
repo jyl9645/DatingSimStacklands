@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: 14YouOffCUT
+  m_Name: MergeFailNode
   m_EditorClassIdentifier: 
-  speaker: You
+  speaker: 
   conditionOperator: 0
   condition: 0
   dialogue:
-  - 
-  sprite:
-  - {fileID: 0}
+  - Nothing seems to happen. Maybe I need different items...
+  sprite: []
   heart_change: 0
   responses: []
