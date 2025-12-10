@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.6770034, y: 0.07249254, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25972375, z: 0.13488722}
+  m_LocalScale: {x: 0.21, y: 0.21816795, z: 0.11330526}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -133,7 +133,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.43, y: 2.27}
+  m_Size: {x: 6.84, y: 9.9}
   m_EdgeRadius: 0
 --- !u!114 &466006640086411261
 MonoBehaviour:
@@ -152,6 +152,8 @@ MonoBehaviour:
   merging: 0
   gameManager: {fileID: 0}
   hearts: 4
+  heartContainer: {fileID: 0}
+  heartPrefab: {fileID: 6668509532533293264, guid: f89d28c8977e63641b7d113cc1a9e610, type: 3}
   mallDialogue: {fileID: 11400000, guid: 3e4d785968e52164c9b598d5da14d778, type: 2}
   coffeeDialogue: {fileID: 11400000, guid: 1ade8fd290574e14089d1a259538f883, type: 2}
   arenaDialogue: {fileID: 11400000, guid: 1f6ba2b10ebb0994aa238e331d886de5, type: 2}

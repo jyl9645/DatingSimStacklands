@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speaker: Sabrina
   conditionOperator: 2
-  condition: 4
+  condition: 3
   dialogue:
   - Hey idiot.
   - "I won\u2019t say it\u2019s nice to go out with you\u2026 because it\u2019s not."

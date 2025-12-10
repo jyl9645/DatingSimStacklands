@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speaker: Sabrina
   conditionOperator: 2
-  condition: 4
+  condition: 3
   dialogue:
   - Hello.
   - "I can\u2019t believe I ditched my friends for you. "

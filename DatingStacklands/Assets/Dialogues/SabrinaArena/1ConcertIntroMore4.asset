@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speaker: Sabrina
   conditionOperator: 2
-  condition: 4
+  condition: 3
   dialogue:
   - Heyy.
   - Show's about to start.

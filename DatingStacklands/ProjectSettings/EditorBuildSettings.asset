@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/JamesPrototype/JamesPrototype.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: 20b831a5fd4936047b4f3708c4f2bae8
+  - enabled: 1
+    path: Assets/Scenes/CreditsScreen.unity
+    guid: d1d1083366bfae041811e4a59d9a8c98
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: e3e46bc2ac0f76c4290662f37e76b07f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Character: Card
@@ -28,8 +30,11 @@ public class Character: Card
         {
             for (int i = 0; i < Mathf.Abs(change); i++)
             {
+                if (hearts <= 0) break;
+
                 hearts --;
-                Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1));
+                Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1 - i).gameObject);
+
                 if (hearts <= 0)
                 {
                     //gameover
