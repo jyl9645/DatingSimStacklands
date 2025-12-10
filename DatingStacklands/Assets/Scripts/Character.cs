@@ -28,6 +28,10 @@ public class Character: Card
     public Sprite cafeBK;
     public Sprite stadiumBK;
 
+    //juice
+    public AudioScript audioScript;
+    public Animator camAnimator;
+
     void Update()
     {
         if (transform.childCount != 0 && !merging)

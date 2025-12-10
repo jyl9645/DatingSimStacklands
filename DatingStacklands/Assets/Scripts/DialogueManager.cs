@@ -20,6 +20,8 @@ public class DialogueManager : MonoBehaviour
     public Image image;
     public TMP_Text heartCounter;
 
+    public AudioScript audioScript;
+
     //text of dialogue box
     private TMP_Text dialogueText;
 
@@ -67,6 +69,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (onDate && Input.GetMouseButtonDown(0) && !isChoosing)
         {
+            audioScript.ClickSoundPlay();
             //if there is more dialogue lines to go in the node
             if (currentLine + 1 < current.dialogue.Length)
             {
@@ -85,6 +88,7 @@ public class DialogueManager : MonoBehaviour
                 else
                 {
                     camAnim.SetTrigger("Transit");
+                    audioScript.warpSoundPlay();
                 }
             }
         }
