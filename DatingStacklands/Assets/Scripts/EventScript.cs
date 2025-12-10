@@ -69,7 +69,6 @@ public class EventScript : MonoBehaviour
 
         if (dialogueManager.current == getOffNode)
         {
-            camAnimator.SetTrigger("Transit");
             
             ResetTutorialBox(locationTutNode);
 
