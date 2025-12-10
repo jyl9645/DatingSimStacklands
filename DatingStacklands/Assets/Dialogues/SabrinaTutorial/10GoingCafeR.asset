@@ -24,4 +24,6 @@ MonoBehaviour:
   - {fileID: 8766204133149993791, guid: 5aefc702a79994149ab74f3331148363, type: 3}
   - {fileID: 8766204133149993791, guid: 8219b88ba9c5045ae82d3a3e9cf5fe65, type: 3}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: b6f46113a8f92164c92a270961ddedce, type: 2}
+  - {fileID: 11400000, guid: d2a64ab20310d39408852ffa52d148b2, type: 2}

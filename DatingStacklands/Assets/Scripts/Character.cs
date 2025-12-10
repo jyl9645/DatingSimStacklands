@@ -1,4 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Unity.VisualStudio.Editor;
+using UnityEngine.UI;
 using UnityEngine;
+using System;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class Character: Card
 {
@@ -14,6 +21,13 @@ public class Character: Card
     public DialogueNode arenaDialogue;
     public DialogueNode restaurantDialogue;
 
+    //backgrounds
+    public UnityEngine.UI.Image bkObject;
+    public Sprite mallBK;
+    public Sprite restaurantBK;
+    public Sprite cafeBK;
+    public Sprite stadiumBK;
+
     void Update()
     {
         if (transform.childCount != 0 && !merging)
@@ -28,11 +42,14 @@ public class Character: Card
         {
             for (int i = 0; i < Mathf.Abs(change); i++)
             {
+                if (hearts <= 0) break;
+
                 hearts --;
-                Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1));
+                Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1 - i).gameObject);
+
                 if (hearts <= 0)
                 {
-                    //gameover
+                    SceneManager.LoadScene("BadEnd");
                 }
             }
         }
@@ -67,25 +84,35 @@ public class Character: Card
 
         if (isDateCard(stackedType))
         {
-            switch (stackedType)
+            foreach (ProgressBarScript bar in transform.GetComponentsInChildren<ProgressBarScript>())
             {
-                case cardType.mallDate:
-                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(mallDialogue, gameObject);
-                    break;
-                case cardType.coffeeDate:
-                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(coffeeDialogue, gameObject);
-                    break;
-                case cardType.arenaDate:
-                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(arenaDialogue, gameObject);
-                    break;
-                case cardType.restaurantDate:
-                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(restaurantDialogue, gameObject);
-                    break;
+                Destroy(bar.gameObject);
             }
             stacked.transform.parent = null;
             merging = false;
             Destroy(stacked);
 
+            switch (stackedType)
+            {
+                case cardType.mallDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(mallDialogue, gameObject);
+                    bkObject.sprite = mallBK;
+                    break;
+                case cardType.coffeeDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(coffeeDialogue, gameObject);
+                    bkObject.sprite = cafeBK;
+                    break;
+                case cardType.arenaDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(arenaDialogue, gameObject);
+                    bkObject.sprite = stadiumBK;
+                    break;
+                case cardType.restaurantDate:
+                    gameManager.GetComponent<DialogueManager>().InitiateDialogue(restaurantDialogue, gameObject);
+                    bkObject.sprite = restaurantBK;
+                    break;
+                default:
+                    break;
+            }
         }
 
         else

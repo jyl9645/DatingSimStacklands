@@ -5,12 +5,7 @@ public class ProgressBarScript : MonoBehaviour
 
     float timer = 0f;
 
-    GameObject fillBlock;
-
-    void Start()
-    {
-        fillBlock = transform.GetChild(0).gameObject;
-    }
+    public GameObject fillBlock;
 
     void Update()
     {

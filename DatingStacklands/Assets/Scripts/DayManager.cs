@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DayManager : MonoBehaviour
 {
@@ -50,7 +51,7 @@ public class DayManager : MonoBehaviour
         }
         else
         {
-            //show gameover screen
+            SceneManager.LoadScene("OkayEnd");
         }
     }
 }
