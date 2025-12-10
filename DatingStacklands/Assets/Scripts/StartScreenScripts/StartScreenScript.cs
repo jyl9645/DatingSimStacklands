@@ -10,7 +10,7 @@ public class StartScreenScript : MonoBehaviour
 
     public void CreditsButton()
     {
-       SceneManager.LoadScene("CreditsScene"); 
+       SceneManager.LoadScene("CreditsScreen"); 
     }
 
     public void StartScreenButton()

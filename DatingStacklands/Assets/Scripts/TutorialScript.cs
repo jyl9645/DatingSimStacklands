@@ -13,6 +13,7 @@ public class TutorialScript : MonoBehaviour
     Vector3 defaultPos = new Vector3(0,0,-10);
 
     public GameObject gameManager;
+    private DialogueManager dialogueManager;
 
     //tutorial events
     public DialogueNode locationTutNode;
@@ -23,11 +24,14 @@ public class TutorialScript : MonoBehaviour
    
     void Start()
     {
-        
+        dialogueManager = gameManager.GetComponent<DialogueManager>();
     }
 
     void Update()
     {
-        
+        if (dialogueManager.current == locationTutNode)
+        {
+            
+        }
     }
 }

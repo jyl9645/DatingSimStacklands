@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public GameObject[] choicePanels;
     
-    public GameObject dialogueBox;
+    public Image dialogueBox;
 
     public Image image;
     public TMP_Text heartCounter;
@@ -35,9 +36,9 @@ public class DialogueManager : MonoBehaviour
     private GameObject[] cards;
 
     //dialogue box prefabs
-    public GameObject sabrinaBox;
-    public GameObject playerBox;
-    public GameObject noBox;
+    public Sprite sabrinaBox;
+    public Sprite playerBox;
+    public Sprite noBox;
 
     void Start()
     {
@@ -204,19 +205,20 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void ChangeDialogueBox(string name)
+    private void ChangeDialogueBox(String name)
     {
+        print(name);
         if (name == "Sabrina")
         {
-            dialogueBox = sabrinaBox;
+            dialogueBox.sprite = sabrinaBox;
         }
         else if (name == "You")
         {
-            dialogueBox = playerBox;
+            dialogueBox.sprite = playerBox;
         }
         else
         {
-            dialogueBox = noBox;
+            dialogueBox.sprite = noBox;
         }
     }
 
