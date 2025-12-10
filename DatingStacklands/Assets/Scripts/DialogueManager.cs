@@ -11,7 +11,9 @@ public class DialogueManager : MonoBehaviour
     //Gameobjects of date dialogue
     public GameObject dialoguePanel;
     public GameObject[] choicePanels;
-    public TMP_Text speakerText;
+    
+    public GameObject dialogueBox;
+
     public Image image;
     public TMP_Text heartCounter;
 
@@ -31,6 +33,11 @@ public class DialogueManager : MonoBehaviour
 
     //array of saved cards to show after dialogue
     private GameObject[] cards;
+
+    //dialogue box prefabs
+    public GameObject sabrinaBox;
+    public GameObject playerBox;
+    public GameObject noBox;
 
     void Start()
     {
@@ -91,7 +98,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         dialogueText.text = current.dialogue[currentLine];
-        speakerText.text = current.speaker;
+        ChangeDialogueBox(current.speaker);
         image.sprite = current.sprite[currentLine];
         heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
 
@@ -144,7 +151,7 @@ public class DialogueManager : MonoBehaviour
         currentLine = 0;
         
         dialogueText.text = current.dialogue[currentLine];
-        speakerText.text = current.speaker;
+        ChangeDialogueBox(current.speaker);
         image.sprite = current.sprite[currentLine];
 
         dater.GetComponent<Character>().ChangeHearts(current.heart_change);
@@ -156,7 +163,7 @@ public class DialogueManager : MonoBehaviour
         currentLine ++;
 
         dialogueText.text = current.dialogue[currentLine];
-        speakerText.text = current.speaker;
+        ChangeDialogueBox(current.speaker);
         image.sprite = current.sprite[currentLine];
     }
 
@@ -194,6 +201,22 @@ public class DialogueManager : MonoBehaviour
         foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
         {
             card.SetActive(false);
+        }
+    }
+
+    private void ChangeDialogueBox(string name)
+    {
+        if (name == "Sabrina")
+        {
+            dialogueBox = sabrinaBox;
+        }
+        else if (name == "You")
+        {
+            dialogueBox = playerBox;
+        }
+        else
+        {
+            dialogueBox = noBox;
         }
     }
 
