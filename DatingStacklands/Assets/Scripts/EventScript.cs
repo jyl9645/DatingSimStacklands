@@ -80,11 +80,13 @@ public class EventScript : MonoBehaviour
         {
             ResetTutorialBox(locationTutNode);
             
+            //load only player and three cards
             //tutorial: cam zoom into the player first; then slowly zoom out until reaches full
         }
 
         else if (tutorialCurrent == locationCamNode)
         {
+            //zoom onto the the location board then out
             
         }
 
@@ -108,11 +110,13 @@ public class EventScript : MonoBehaviour
     public void draw_tutorial()
     {
         ResetTutorialBox(mergeTutNode);
+        //zoom onto items then out
     }
 
     public void merge_tutorial()
     {
         ResetTutorialBox(giftTutNode);
+        
     }
 
     public void merge_fail()

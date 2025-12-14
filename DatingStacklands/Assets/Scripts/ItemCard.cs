@@ -15,7 +15,7 @@ public class ItemCard : Card
     {
         if (!transform.parent)
         {
-            if (transform.childCount != 0 && merging == false)
+            if (transform.childCount > 1 && merging == false)
             {
                 Card[] allCards = GetComponentsInChildren<Card>();
 
@@ -30,7 +30,10 @@ public class ItemCard : Card
                 }
                 else
                 {
-                    transform.DetachChildren();
+                    foreach (Card card in transform.GetComponentsInChildren<Card>())
+                    {
+                        card.gameObject.transform.parent = null;
+                    }
                     GameManagerSingle.Instance.GetComponent<EventScript>().merge_fail();
                 }
             }

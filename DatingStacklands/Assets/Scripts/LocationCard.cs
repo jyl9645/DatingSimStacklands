@@ -11,11 +11,11 @@ public class LocationCard : Card
 
     void Update()
     {
-        if (transform.childCount != 0 && !merging)
+        if (transform.childCount > 1 && !merging)
         {
-            if (transform.GetChild(0).GetComponent<Card>().type == cardType.player)
+            if (transform.GetChild(1).GetComponent<Card>().type == cardType.player)
             {
-                player = transform.GetChild(0).gameObject;
+                player = transform.GetChild(1).gameObject;
                 StartMerge();
             }
         }

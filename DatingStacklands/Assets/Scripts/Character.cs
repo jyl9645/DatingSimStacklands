@@ -35,28 +35,28 @@ public class Character: Card
 
     void Update()
     {
-        if (transform.childCount != 0 && !merging)
+        if (transform.childCount > 1 && !merging)
         {
-            cardType childType = transform.GetChild(0).gameObject.GetComponent<Card>().type;
+            cardType childType = transform.GetChild(1).gameObject.GetComponent<Card>().type;
             if (isDateCard(childType))
             {
                 StartMerge();
             }
             else if ((childType == cardType.player && type == cardType.sabrina) || (childType == cardType.sabrina && type == cardType.player))
             {
-                transform.DetachChildren();
+                RemoveCardChildren();
                 GameManagerSingle.Instance.GetComponent<EventScript>().player_sabrina_match();
             }
             else
             {
                 if (type == cardType.sabrina)
                 {
-                    transform.DetachChildren();
+                    RemoveCardChildren();
                     GameManagerSingle.Instance.GetComponent<EventScript>().sabrina_no_match();
                 }
                 else if (type == cardType.player)
                 {
-                    transform.DetachChildren();
+                    RemoveCardChildren();
                     GameManagerSingle.Instance.GetComponent<EventScript>().player_no_match();
                 }
             }
@@ -107,7 +107,7 @@ public class Character: Card
 
     public override void FinishMerge()
     {
-        GameObject stacked = transform.GetChild(0).gameObject;
+        GameObject stacked = transform.GetChild(1).gameObject;
         cardType stackedType = stacked.GetComponent<Card>().type;
 
         if (isDateCard(stackedType))
@@ -149,6 +149,14 @@ public class Character: Card
             merging = false;
         }
 
+    }
+
+    private void RemoveCardChildren()
+    {
+        foreach (Card card in transform.GetComponentsInChildren<Card>())
+        {
+            card.gameObject.transform.parent = null;
+        }
     }
     
 } 
