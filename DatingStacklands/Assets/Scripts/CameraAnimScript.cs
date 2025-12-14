@@ -7,6 +7,15 @@ public class CameraAnimScript : MonoBehaviour
 
     public void Transition()
     {
-        dM.CloseDialogue();
+        if (dM.dateScreen.activeSelf)
+        {
+            dM.CloseDialogue();
+        }
+        else
+        {
+            dM.dateScreen.SetActive(true);
+            dM.HideCards();
+        }
+        
     }
 }

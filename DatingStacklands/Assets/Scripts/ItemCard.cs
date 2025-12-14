@@ -11,10 +11,6 @@ public class ItemCard : Card
     public GameObject[] datePossibilities; 
     public static bool tutMerged;
 
-    //
-    public GameObject tutorialTextPanel;
-    public TMP_Text tutorialText;
-
     void Update()
     {
         if (!transform.parent)
@@ -32,6 +28,11 @@ public class ItemCard : Card
                     merging = true;
                     return;
                 }
+                else
+                {
+                    transform.DetachChildren();
+                    GameManagerSingle.Instance.GetComponent<EventScript>().merge_fail();
+                }
             }
         }
     }
@@ -41,7 +42,7 @@ public class ItemCard : Card
         if (!tutMerged)
         {
             tutMerged = true;
-            EventScript.merged = true;
+            GameManagerSingle.Instance.GetComponent<EventScript>().merge_tutorial();
         }
         switch (result)
         {

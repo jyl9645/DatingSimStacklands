@@ -17,8 +17,8 @@ MonoBehaviour:
   condition: 0
   dialogue:
   - Nice items.
-  - 'Maybe now i can make an excuse to go out with her? '
-  - "Most of the day is gone\u2026 I gotta hurry. "
+  - Maybe If I try merging them, I can make up a date idea.
+  - "Most of the day is gone though\u2026 I gotta hurry. "
   sprite:
   - {fileID: 0}
   - {fileID: 0}

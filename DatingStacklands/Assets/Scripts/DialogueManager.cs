@@ -87,6 +87,7 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
+                    onDate = false;
                     camAnim.SetTrigger("Transit");
                     audioScript.warpSoundPlay();
                 }
@@ -99,7 +100,11 @@ public class DialogueManager : MonoBehaviour
         dater = datee;
         onDate = true;
         current = root;
-        dateScreen.SetActive(true);
+       
+        //initiate transition animation, which will activate the date screen at its end
+        camAnim.SetTrigger("Transit");
+        audioScript.warpSoundPlay();
+
         currentLine = 0;
 
         if (current.conditionOperator == DialogueNode.op.lessthan)
@@ -123,13 +128,8 @@ public class DialogueManager : MonoBehaviour
         ChangeCharImage(current.sprite[currentLine]);
         heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
 
-        cards = GameObject.FindGameObjectsWithTag("Card");
-
-        foreach (GameObject card in cards)
-        {
-            print(card);
-            card.SetActive(false);
-        }
+        //cards are hid during animatin transition event
+        //date screen will open with animation transition event
     }
 
     public void CloseDialogue()
@@ -217,9 +217,11 @@ public class DialogueManager : MonoBehaviour
         isChoosing = false;
     }
 
-    private void HideCards()
+    public void HideCards()
     {
-        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
+        cards = GameObject.FindGameObjectsWithTag("Card");
+
+        foreach (GameObject card in cards)
         {
             card.SetActive(false);
         }

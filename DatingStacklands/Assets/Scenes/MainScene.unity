@@ -480,10 +480,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 502266520}
-    - target: {fileID: 2810032519829588465, guid: 15150bf6ae69aa04b8d837605a3194c0, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1498592367}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -611,10 +607,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 502266520}
-    - target: {fileID: 2810032519829588465, guid: 26583ea32e9b39d47b7778e9c64845ed, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1498592367}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1023,10 +1015,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 502266520}
-    - target: {fileID: 2810032519829588465, guid: 81ef201ad946c8f48a99bf41518c2980, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1498592367}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2692,6 +2680,7 @@ GameObject:
   - component: {fileID: 1498592372}
   - component: {fileID: 1498592373}
   - component: {fileID: 1498592374}
+  - component: {fileID: 1498592375}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2817,7 +2806,7 @@ MonoBehaviour:
   tutorialTextPanel: {fileID: 1748926218}
   tutorialText: {fileID: 41296630}
   dateScreen: {fileID: 1906616855}
-  getOffNode: {fileID: 11400000, guid: 5a60c78eef0a1d449a796a7ed1ebce56, type: 2}
+  getOffNode: {fileID: 11400000, guid: 7aa1517dad6ae4c42a3a41d287a5a1c3, type: 2}
   locationTutNode: {fileID: 11400000, guid: 69c557608bb3e544e8e00d7d80bfdee8, type: 2}
   locationCamNode: {fileID: 11400000, guid: 2b19158529ea4714abafce40bf1539bc, type: 2}
   mergeTutNode: {fileID: 11400000, guid: d850b08acb8b25040aff910ae2cf20a8, type: 2}
@@ -2826,6 +2815,22 @@ MonoBehaviour:
   rejectend: {fileID: 11400000, guid: 32ed2556e4f26414998bc1ead59bde09, type: 2}
   goodend: {fileID: 11400000, guid: cd9a9de6c43c0f444ba979eb6769a124, type: 2}
   camAnimator: {fileID: 48302555}
+  mergeFail: {fileID: 11400000, guid: ee6b7d5a61a18884eb8a5311ae80e580, type: 2}
+  sabrinaNoMatch: {fileID: 11400000, guid: 1ca29f68ef0fd744ea0ecc291f7306b2, type: 2}
+  playerNoMatch: {fileID: 11400000, guid: 2345dbc9f37755f4ebcd2e0aaf82dbfd, type: 2}
+  sabrinaPlayerNoMatch: {fileID: 11400000, guid: 9f7d4cadf4f08a4478a52730dc59e7d6, type: 2}
+--- !u!114 &1498592375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498592367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abfc762228f18034ab865ccd31ef99b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1569788341
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,7 +3898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1906616856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4366,6 +4371,10 @@ PrefabInstance:
     - target: {fileID: 2363528177128077613, guid: f749c936f4a916147891de4a92ea6bc2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363528177128077613, guid: f749c936f4a916147891de4a92ea6bc2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5929615776812477243, guid: f749c936f4a916147891de4a92ea6bc2, type: 3}
       propertyPath: m_Name

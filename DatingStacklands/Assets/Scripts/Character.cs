@@ -6,6 +6,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class Character: Card
 {
@@ -36,7 +37,30 @@ public class Character: Card
     {
         if (transform.childCount != 0 && !merging)
         {
-            StartMerge();
+            cardType childType = transform.GetChild(0).gameObject.GetComponent<Card>().type;
+            if (isDateCard(childType))
+            {
+                StartMerge();
+            }
+            else if ((childType == cardType.player && type == cardType.sabrina) || (childType == cardType.sabrina && type == cardType.player))
+            {
+                transform.DetachChildren();
+                GameManagerSingle.Instance.GetComponent<EventScript>().player_sabrina_match();
+            }
+            else
+            {
+                if (type == cardType.sabrina)
+                {
+                    transform.DetachChildren();
+                    GameManagerSingle.Instance.GetComponent<EventScript>().sabrina_no_match();
+                }
+                else if (type == cardType.player)
+                {
+                    transform.DetachChildren();
+                    GameManagerSingle.Instance.GetComponent<EventScript>().player_no_match();
+                }
+            }
+            
         }
     }
 
@@ -120,7 +144,7 @@ public class Character: Card
         }
 
         else
-        {
+        {            
             stacked.transform.parent = null;
             merging = false;
         }

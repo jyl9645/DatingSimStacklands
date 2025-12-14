@@ -32,16 +32,18 @@ public class EventScript : MonoBehaviour
     public DialogueNode rejectend;
     public DialogueNode goodend;
 
-    //tutorial bools
-    public static bool drawn;
-    public static bool merged;
-
     //tutorial vars
     public static DialogueNode tutorialCurrent;
     public static int currentTutLine;
 
     //cam animator
     public Animator camAnimator;
+
+    //in game event nodes
+    public DialogueNode mergeFail;
+    public DialogueNode sabrinaNoMatch;
+    public DialogueNode playerNoMatch;
+    public DialogueNode sabrinaPlayerNoMatch;
 
     void Start()
     {
@@ -57,9 +59,16 @@ public class EventScript : MonoBehaviour
 
             if (currentTutLine >= tutorialCurrent.dialogue.Length)
             {
-                tutorialCurrent = null;
-                currentTutLine = 0;
-                tutorialTextPanel.SetActive(false);
+                if (tutorialCurrent.responses.Count != 0)
+                {
+                    ResetTutorialBox(tutorialCurrent.responses[0]);
+                }
+                else
+                {
+                    tutorialCurrent = null;
+                    currentTutLine = 0;
+                    tutorialTextPanel.SetActive(false);
+                }
             }
             else
             {
@@ -69,24 +78,14 @@ public class EventScript : MonoBehaviour
 
         if (dialogueManager.current == getOffNode)
         {
-            
             ResetTutorialBox(locationTutNode);
-
+            
+            //tutorial: cam zoom into the player first; then slowly zoom out until reaches full
         }
 
-        else if (drawn)
+        else if (tutorialCurrent == locationCamNode)
         {
-            ResetTutorialBox(mergeTutNode);
-
-            drawn = false;
-        }
-
-        else if (merged)
-        {
-            ResetTutorialBox(giftTutNode);
-
-            merged = false;
-
+            
         }
 
         //ending stuff
@@ -103,6 +102,59 @@ public class EventScript : MonoBehaviour
             SceneManager.LoadScene("GoodEnd");
         }
     }
+
+//event functions
+
+    public void draw_tutorial()
+    {
+        ResetTutorialBox(mergeTutNode);
+    }
+
+    public void merge_tutorial()
+    {
+        ResetTutorialBox(giftTutNode);
+    }
+
+    public void merge_fail()
+    {
+        if (tutorialCurrent != mergeFail)
+        {
+            ResetTutorialBox(mergeFail);
+        }
+        
+    }
+
+    public void player_no_match()
+    {
+        if (tutorialCurrent != playerNoMatch)
+        {
+            ResetTutorialBox(playerNoMatch);
+        }
+        
+    }
+
+    public void player_sabrina_match()
+    {
+        if (tutorialCurrent != sabrinaPlayerNoMatch)
+        {
+            ResetTutorialBox(sabrinaPlayerNoMatch);
+        }
+        
+    }
+
+    public void sabrina_no_match()
+    {
+        if (tutorialCurrent != sabrinaNoMatch)
+        {
+            ResetTutorialBox(sabrinaNoMatch);
+        }
+        
+    }
+
+/// <summary>
+/// Resets the board's tutorial dialogue box to give hints/warnings
+/// </summary>
+/// <param name="startNode"></param>
 
     private void ResetTutorialBox(DialogueNode startNode)
     {
