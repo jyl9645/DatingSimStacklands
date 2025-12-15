@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Diagnostics;
+using System.ComponentModel;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -56,6 +57,9 @@ public class DialogueManager : MonoBehaviour
 
     //tutorial getOff transition
     public DialogueNode getOffNode;
+
+    //heart container
+    public GameObject heartContainer;
 
     void Start()
     {
@@ -111,6 +115,13 @@ public class DialogueManager : MonoBehaviour
 
         currentLine = 0;
 
+        RectTransform containerTransform = heartContainer.GetComponent<RectTransform>();
+        Vector3 tempheartContPos = containerTransform.anchoredPosition;
+        tempheartContPos.x = -5;
+
+        containerTransform.anchoredPosition = tempheartContPos;
+        containerTransform.localScale = new Vector3(1,1,1);
+
         if (current.conditionOperator == DialogueNode.op.lessthan)
         {
             if (dater.GetComponent<Character>().hearts >= current.condition)
@@ -149,8 +160,14 @@ public class DialogueManager : MonoBehaviour
            if (card)
            {
                card.SetActive(true);
+               EventScript.InitCard(card);
            }
        }
+
+       RectTransform containerTransform = heartContainer.GetComponent<RectTransform>();
+
+       containerTransform.anchoredPosition = new Vector3(0-88, 198, -4087.722f);
+       containerTransform.localScale = new Vector3(0.74544f, 0.74544f, 0.74544f);
     }
 
     private void NextDialogueNode(int index)

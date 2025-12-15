@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: 10KeepWaiting
+  m_Name: 5There
   m_EditorClassIdentifier: 
-  speaker: 
+  speaker: Sabrina
   conditionOperator: 0
   condition: 0
   dialogue:
-  - Keep Waiting
+  - These outfits are so cuteee..
+  - Which one should I get?
   sprite:
   - {fileID: 245999297116322372, guid: 9dbd89cf737554e80b1a4aea58ef0ae0, type: 3}
+  - {fileID: 8766204133149993791, guid: 3665144cdeadc44c9a21432d806e00ff, type: 3}
   heart_change: 0
   responses:
-  - {fileID: 11400000, guid: f313103a432c42d449fbf9b4eed3f327, type: 2}
+  - {fileID: 11400000, guid: 8820be5875128ad4bac343b9d97c6490, type: 2}
+  - {fileID: 11400000, guid: 5118107f4b8d29944a1a7b96bd0b7cb1, type: 2}
+  - {fileID: 11400000, guid: e041186ebaae7054da8c2a34061dd77e, type: 2}

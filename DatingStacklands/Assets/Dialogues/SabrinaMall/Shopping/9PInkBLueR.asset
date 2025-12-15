@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: 10PhoneRechoiceRNo
+  m_Name: 9PInkBLueR
   m_EditorClassIdentifier: 
   speaker: Sabrina
   conditionOperator: 0
   condition: 0
   dialogue:
-  - "Whatever, I\u2019m not here to argue with you."
-  - "Let\u2019s get moving, you didn\u2019t invite me here to stand around doing
-    nothing. "
+  - That is HIDEOUS...
+  - Horrible color scheme.
+  - I mean, are you even using your eyes?
   sprite:
+  - {fileID: 8766204133149993791, guid: f0471dad4d6a94c2aadf004e7ef3f946, type: 3}
   - {fileID: 8766204133149993791, guid: fe290ddaac09448dd89e90b2e470ecac, type: 3}
-  - {fileID: 8766204133149993791, guid: 3665144cdeadc44c9a21432d806e00ff, type: 3}
+  - {fileID: 8766204133149993791, guid: f0471dad4d6a94c2aadf004e7ef3f946, type: 3}
   heart_change: -1
   responses:
-  - {fileID: 11400000, guid: ff77a0c3f6c47b24ba086b294912232e, type: 2}
-  - {fileID: 11400000, guid: 207b65223ac9be04a84c5f551b2c3027, type: 2}
-  - {fileID: 11400000, guid: 692d605898d0dde43ae5f3a4ab91e844, type: 2}
+  - {fileID: 11400000, guid: ef0d5c63c5855e148b539b316ba69e53, type: 2}

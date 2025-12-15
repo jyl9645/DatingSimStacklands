@@ -69,10 +69,13 @@ public class Character: Card
     {
         if (change < 0)
         {
+            //put camera shake code here
+
+            //between these comments
+
+
             for (int i = 0; i < Mathf.Abs(change); i++)
             {
-                if (hearts <= 0) break;
-
                 hearts --;
                 Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1 - i).gameObject);
 

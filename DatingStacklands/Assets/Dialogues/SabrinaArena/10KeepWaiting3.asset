@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a5cb954cc0d6234c917829bef3f72fc, type: 3}
-  m_Name: 10KeepWaiting
+  m_Name: 10KeepWaiting3
   m_EditorClassIdentifier: 
   speaker: 
   conditionOperator: 0
@@ -21,4 +21,4 @@ MonoBehaviour:
   - {fileID: 245999297116322372, guid: 9dbd89cf737554e80b1a4aea58ef0ae0, type: 3}
   heart_change: 0
   responses:
-  - {fileID: 11400000, guid: f313103a432c42d449fbf9b4eed3f327, type: 2}
+  - {fileID: 11400000, guid: 39ee7484fac7e2a49a30fc968f85af3f, type: 2}

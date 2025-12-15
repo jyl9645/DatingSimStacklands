@@ -2806,6 +2806,7 @@ MonoBehaviour:
   busBK: {fileID: -9156326661238085765, guid: 91c14ebdc163a564385dc144974d390c, type: 3}
   camAnim: {fileID: 48302555}
   getOffNode: {fileID: 11400000, guid: 7aa1517dad6ae4c42a3a41d287a5a1c3, type: 2}
+  heartContainer: {fileID: 149570173}
 --- !u!114 &1498592369
 MonoBehaviour:
   m_ObjectHideFlags: 0
