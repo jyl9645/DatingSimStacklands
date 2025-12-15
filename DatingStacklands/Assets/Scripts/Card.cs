@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour
 {
     public cardType type;
+    public bool frozen;
 
     public GameObject progressPrefab;
 
