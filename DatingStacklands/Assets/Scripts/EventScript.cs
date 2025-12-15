@@ -1,6 +1,7 @@
+using System.Linq;
 using NUnit.Framework.Constraints;
 using TMPro;
-using Unity.Cinemachine;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class EventScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject tutorialTextPanel;
+    public GameObject tutorialTextPanel;
     [SerializeField]
     TMP_Text tutorialText;
     [SerializeField]
@@ -36,6 +37,13 @@ public class EventScript : MonoBehaviour
     public static DialogueNode tutorialCurrent;
     public static int currentTutLine;
 
+    //tutorial cards
+    public GameObject player;
+    public GameObject mallCard;
+    public GameObject cafeCard;
+    public GameObject arenaCard;
+    public GameObject sabrinaCard;
+
     //cam animator
     public Animator camAnimator;
 
@@ -45,6 +53,9 @@ public class EventScript : MonoBehaviour
     public DialogueNode playerNoMatch;
     public DialogueNode sabrinaPlayerNoMatch;
 
+    //darken screen
+    public GameObject darkenScreen;
+
     void Start()
     {
         dialogueManager = GetComponent<DialogueManager>();
@@ -53,7 +64,7 @@ public class EventScript : MonoBehaviour
     void Update()
     {
         //all tutorial stuff
-        if (Input.GetMouseButtonDown(0) && tutorialTextPanel.activeSelf)
+        if (Input.GetMouseButtonUp(0) && tutorialTextPanel.activeSelf)
         {
             currentTutLine ++;
 
@@ -76,18 +87,9 @@ public class EventScript : MonoBehaviour
             }
         }
 
-        if (dialogueManager.current == getOffNode)
+        else if (tutorialCurrent == locationCamNode && !mallCard.activeSelf && !arenaCard.activeSelf && !cafeCard.activeSelf)
         {
-            ResetTutorialBox(locationTutNode);
-            
-            //load only player and three cards
-            //tutorial: cam zoom into the player first; then slowly zoom out until reaches full
-        }
-
-        else if (tutorialCurrent == locationCamNode)
-        {
-            //zoom onto the the location board then out
-            
+            location_Cam_tutorial();
         }
 
         //ending stuff
@@ -107,15 +109,47 @@ public class EventScript : MonoBehaviour
 
 //event functions
 
-    public void draw_tutorial()
+    public void get_off_Tutorial()
     {
-        ResetTutorialBox(mergeTutNode);
-        //zoom onto items then out
+        unhighlight();
+
+        InitCard(player);
+        ResetTutorialBox(locationTutNode);
+        GameObject[] toHighlight = {player};
+        highlight(toHighlight);
     }
 
-    public void merge_tutorial()
+    public void location_Cam_tutorial()
     {
+        unhighlight();
+
+        InitCard(mallCard);
+        InitCard(arenaCard);
+        InitCard(cafeCard);
+        GameObject[] toHighlight = {mallCard, arenaCard, cafeCard, player};
+        highlight(toHighlight);
+    }
+
+    public void draw_tutorial()
+    {
+        unhighlight();
+
+        ResetTutorialBox(mergeTutNode);
+        ItemCard[] itemCards = FindObjectsByType<ItemCard>(FindObjectsSortMode.None);
+        GameObject[] itemObjects = itemCards.Select(comp => comp.gameObject).ToArray();
+
+        highlight(itemObjects);
+    }
+
+    public void merge_tutorial(GameObject datecard)
+    {
+        unhighlight();
+
+        InitCard(sabrinaCard);
         ResetTutorialBox(giftTutNode);
+
+        GameObject[] datecardHighlight = {datecard, sabrinaCard};
+        highlight(datecardHighlight);
         
     }
 
@@ -155,11 +189,6 @@ public class EventScript : MonoBehaviour
         
     }
 
-/// <summary>
-/// Resets the board's tutorial dialogue box to give hints/warnings
-/// </summary>
-/// <param name="startNode"></param>
-
     private void ResetTutorialBox(DialogueNode startNode)
     {
         tutorialCurrent = startNode;
@@ -167,5 +196,41 @@ public class EventScript : MonoBehaviour
 
         tutorialTextPanel.SetActive(true);
         tutorialText.text = tutorialCurrent.dialogue[currentTutLine];
+    }
+
+    private void highlight(GameObject[] highlightedCards)
+    {
+        darkenScreen.SetActive(true);
+        darkenScreen.GetComponent<Animator>().SetBool("Darken", true);
+
+        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+        foreach (GameObject card in cards)
+        {
+            if (!highlightedCards.Contains(card))
+            {
+                card.GetComponent<Animator>().SetBool("Darken", true);
+            }
+        }
+    }
+
+    public void unhighlight()
+    {
+        darkenScreen.GetComponent<Animator>().SetBool("Darken", false);
+        darkenScreen.SetActive(false);
+
+        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+        foreach (GameObject card in cards)
+        {
+            card.GetComponent<Animator>().SetBool("Darken", false);
+        }
+    }
+
+    public static void InitCard(GameObject card)
+    {
+        card.SetActive(true);
+        Animator cardAnim = card.GetComponent<Animator>();
+
+        cardAnim.SetTrigger("Init");
+        cardAnim.SetTrigger("Enter");
     }
 }

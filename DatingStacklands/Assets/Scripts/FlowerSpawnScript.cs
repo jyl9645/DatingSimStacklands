@@ -22,7 +22,8 @@ public class FlowerSpawnScript : MonoBehaviour
         {
             if (sabrinaCharacter.hearts >= 10)
             {
-                Instantiate(flowerCard);
+                GameObject flower = Instantiate(flowerCard);
+                EventScript.InitCard(flower);
                 flowerMade = true;
             }
         }

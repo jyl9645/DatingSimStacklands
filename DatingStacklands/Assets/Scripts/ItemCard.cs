@@ -42,28 +42,36 @@ public class ItemCard : Card
 
     public override void FinishMerge()
     {
-        if (!tutMerged)
-        {
-            tutMerged = true;
-            GameManagerSingle.Instance.GetComponent<EventScript>().merge_tutorial();
-        }
+        
+        GameObject temp_tut_datecard = null;
+
         switch (result)
         {
             case cardType.mallDate:
-                Instantiate(datePossibilities[0], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[0], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
 
             case cardType.coffeeDate:
-                Instantiate(datePossibilities[1], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[1], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
 
             case cardType.arenaDate:
-                Instantiate(datePossibilities[2], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[2], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
 
             case cardType.restaurantDate:
-                Instantiate(datePossibilities[3], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[3], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
+        }
+
+        if (!tutMerged && temp_tut_datecard != null)
+        {
+            tutMerged = true;
+            GameManagerSingle.Instance.GetComponent<EventScript>().merge_tutorial(temp_tut_datecard);
         }
 
         merging = false;

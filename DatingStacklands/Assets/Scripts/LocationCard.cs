@@ -35,6 +35,7 @@ public class LocationCard : Card
             }
 
             GameObject newItem = Instantiate(tempItems[randomChoice]);
+            EventScript.InitCard(newItem);
             tempItems[randomChoice] = null;
 
             float randomX = Random.Range(gameObject.transform.position.x - 1f, gameObject.transform.position.x + 1f);

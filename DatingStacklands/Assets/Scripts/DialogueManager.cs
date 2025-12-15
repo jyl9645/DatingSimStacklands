@@ -54,6 +54,9 @@ public class DialogueManager : MonoBehaviour
     //animator
     public Animator camAnim;
 
+    //tutorial getOff transition
+    public DialogueNode getOffNode;
+
     void Start()
     {
         dialogueText = dialoguePanel.GetComponentInChildren<TMP_Text>();
@@ -90,6 +93,7 @@ public class DialogueManager : MonoBehaviour
                     onDate = false;
                     camAnim.SetTrigger("Transit");
                     audioScript.warpSoundPlay();
+
                 }
             }
         }

@@ -9,6 +9,10 @@ public class CameraAnimScript : MonoBehaviour
     {
         if (dM.dateScreen.activeSelf)
         {
+            if (dM.current == GameManagerSingle.Instance.GetComponent<EventScript>().getOffNode)
+            {
+                GameManagerSingle.Instance.GetComponent<EventScript>().get_off_Tutorial();
+            }
             dM.CloseDialogue();
         }
         else

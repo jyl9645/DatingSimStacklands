@@ -7,6 +7,7 @@ using System;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class Character: Card
 {
@@ -120,6 +121,12 @@ public class Character: Card
             merging = false;
             Destroy(stacked);
 
+            EventScript eS = GameManagerSingle.Instance.GetComponent<EventScript>();
+            if (eS.darkenScreen.activeSelf)
+            {
+                eS.unhighlight();
+            }
+
             switch (stackedType)
             {
                 case cardType.mallDate:
@@ -141,6 +148,7 @@ public class Character: Card
                 default:
                     break;
             }
+
         }
 
         else

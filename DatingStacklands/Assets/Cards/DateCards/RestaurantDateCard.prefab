@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 6147958856716715969}
   - component: {fileID: 5526147030349756458}
   - component: {fileID: 5092661685565121393}
+  - component: {fileID: -6567763620958075634}
   m_Layer: 0
   m_Name: RestaurantDateCard
   m_TagString: Card
@@ -182,3 +183,25 @@ MonoBehaviour:
   type: 3
   progressPrefab: {fileID: 5080196377200705384, guid: f225a7eb0f0ad42429736fe7c4a4b770, type: 3}
   merging: 0
+--- !u!95 &-6567763620958075634
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918826204624596828}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87127d52ce1bcc7419fe42e3ee6d167f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

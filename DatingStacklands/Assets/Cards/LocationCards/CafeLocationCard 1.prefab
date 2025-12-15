@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1653609843332001904}
   - component: {fileID: 3042026184882335924}
   - component: {fileID: 2810032519829588465}
+  - component: {fileID: -1924361798130399733}
   m_Layer: 0
   m_Name: CafeLocationCard 1
   m_TagString: Card
@@ -100,6 +101,28 @@ MonoBehaviour:
   - {fileID: 2788106618683824112, guid: b291aabafa6caee41814affb5c604321, type: 3}
   - {fileID: 2788106618683824112, guid: 6ff7a7ab3002a9244bc74378e708fdd8, type: 3}
   - {fileID: 2788106618683824112, guid: 530f33b16b5d0a54d85bb034facc1fb9, type: 3}
+--- !u!95 &-1924361798130399733
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837855400035467937}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87127d52ce1bcc7419fe42e3ee6d167f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6885874510127450158
 GameObject:
   m_ObjectHideFlags: 0
