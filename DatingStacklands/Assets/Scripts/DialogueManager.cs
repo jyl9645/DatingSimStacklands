@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Diagnostics;
+using System.ComponentModel;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -54,6 +55,12 @@ public class DialogueManager : MonoBehaviour
     //animator
     public Animator camAnim;
 
+    //tutorial getOff transition
+    public DialogueNode getOffNode;
+
+    //heart container
+    public GameObject heartContainer;
+
     void Start()
     {
         dialogueText = dialoguePanel.GetComponentInChildren<TMP_Text>();
@@ -87,8 +94,10 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
+                    onDate = false;
                     camAnim.SetTrigger("Transit");
                     audioScript.warpSoundPlay();
+
                 }
             }
         }
@@ -99,8 +108,19 @@ public class DialogueManager : MonoBehaviour
         dater = datee;
         onDate = true;
         current = root;
-        dateScreen.SetActive(true);
+       
+        //initiate transition animation, which will activate the date screen at its end
+        camAnim.SetTrigger("Transit");
+        audioScript.warpSoundPlay();
+
         currentLine = 0;
+
+        RectTransform containerTransform = heartContainer.GetComponent<RectTransform>();
+        Vector3 tempheartContPos = containerTransform.anchoredPosition;
+        tempheartContPos.x = -5;
+
+        containerTransform.anchoredPosition = tempheartContPos;
+        containerTransform.localScale = new Vector3(1,1,1);
 
         if (current.conditionOperator == DialogueNode.op.lessthan)
         {
@@ -123,13 +143,8 @@ public class DialogueManager : MonoBehaviour
         ChangeCharImage(current.sprite[currentLine]);
         heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
 
-        cards = GameObject.FindGameObjectsWithTag("Card");
-
-        foreach (GameObject card in cards)
-        {
-            print(card);
-            card.SetActive(false);
-        }
+        //cards are hid during animatin transition event
+        //date screen will open with animation transition event
     }
 
     public void CloseDialogue()
@@ -145,8 +160,14 @@ public class DialogueManager : MonoBehaviour
            if (card)
            {
                card.SetActive(true);
+               EventScript.InitCard(card);
            }
        }
+
+       RectTransform containerTransform = heartContainer.GetComponent<RectTransform>();
+
+       containerTransform.anchoredPosition = new Vector3(0-88, 198, -4087.722f);
+       containerTransform.localScale = new Vector3(0.74544f, 0.74544f, 0.74544f);
     }
 
     private void NextDialogueNode(int index)
@@ -217,9 +238,11 @@ public class DialogueManager : MonoBehaviour
         isChoosing = false;
     }
 
-    private void HideCards()
+    public void HideCards()
     {
-        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
+        cards = GameObject.FindGameObjectsWithTag("Card");
+
+        foreach (GameObject card in cards)
         {
             card.SetActive(false);
         }

@@ -7,6 +7,19 @@ public class CameraAnimScript : MonoBehaviour
 
     public void Transition()
     {
-        dM.CloseDialogue();
+        if (dM.dateScreen.activeSelf)
+        {
+            if (dM.current == GameManagerSingle.Instance.GetComponent<EventScript>().getOffNode)
+            {
+                GameManagerSingle.Instance.GetComponent<EventScript>().get_off_Tutorial();
+            }
+            dM.CloseDialogue();
+        }
+        else
+        {
+            dM.dateScreen.SetActive(true);
+            dM.HideCards();
+        }
+        
     }
 }

@@ -1,6 +1,7 @@
+using System.Linq;
 using NUnit.Framework.Constraints;
 using TMPro;
-using Unity.Cinemachine;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class EventScript : MonoBehaviour
 {
     [SerializeField]
-    GameObject tutorialTextPanel;
+    public GameObject tutorialTextPanel;
     [SerializeField]
     TMP_Text tutorialText;
     [SerializeField]
@@ -32,16 +33,28 @@ public class EventScript : MonoBehaviour
     public DialogueNode rejectend;
     public DialogueNode goodend;
 
-    //tutorial bools
-    public static bool drawn;
-    public static bool merged;
-
     //tutorial vars
     public static DialogueNode tutorialCurrent;
     public static int currentTutLine;
 
+    //tutorial cards
+    public GameObject player;
+    public GameObject mallCard;
+    public GameObject cafeCard;
+    public GameObject arenaCard;
+    public GameObject sabrinaCard;
+
     //cam animator
     public Animator camAnimator;
+
+    //in game event nodes
+    public DialogueNode mergeFail;
+    public DialogueNode sabrinaNoMatch;
+    public DialogueNode playerNoMatch;
+    public DialogueNode sabrinaPlayerNoMatch;
+
+    //darken screen
+    public GameObject darkenScreen;
 
     void Start()
     {
@@ -51,15 +64,22 @@ public class EventScript : MonoBehaviour
     void Update()
     {
         //all tutorial stuff
-        if (Input.GetMouseButtonDown(0) && tutorialTextPanel.activeSelf)
+        if (Input.GetMouseButtonUp(0) && tutorialTextPanel.activeSelf)
         {
             currentTutLine ++;
 
             if (currentTutLine >= tutorialCurrent.dialogue.Length)
             {
-                tutorialCurrent = null;
-                currentTutLine = 0;
-                tutorialTextPanel.SetActive(false);
+                if (tutorialCurrent.responses.Count != 0)
+                {
+                    ResetTutorialBox(tutorialCurrent.responses[0]);
+                }
+                else
+                {
+                    tutorialCurrent = null;
+                    currentTutLine = 0;
+                    tutorialTextPanel.SetActive(false);
+                }
             }
             else
             {
@@ -67,26 +87,9 @@ public class EventScript : MonoBehaviour
             }
         }
 
-        if (dialogueManager.current == getOffNode)
+        else if (tutorialCurrent == locationCamNode && !mallCard.activeSelf && !arenaCard.activeSelf && !cafeCard.activeSelf)
         {
-            
-            ResetTutorialBox(locationTutNode);
-
-        }
-
-        else if (drawn)
-        {
-            ResetTutorialBox(mergeTutNode);
-
-            drawn = false;
-        }
-
-        else if (merged)
-        {
-            ResetTutorialBox(giftTutNode);
-
-            merged = false;
-
+            location_Cam_tutorial();
         }
 
         //ending stuff
@@ -104,6 +107,88 @@ public class EventScript : MonoBehaviour
         }
     }
 
+//event functions
+
+    public void get_off_Tutorial()
+    {
+        unhighlight();
+
+        InitCard(player);
+        ResetTutorialBox(locationTutNode);
+        GameObject[] toHighlight = {player};
+        highlight(toHighlight);
+    }
+
+    public void location_Cam_tutorial()
+    {
+        unhighlight();
+
+        InitCard(mallCard);
+        InitCard(arenaCard);
+        InitCard(cafeCard);
+        GameObject[] toHighlight = {mallCard, arenaCard, cafeCard, player};
+        highlight(toHighlight);
+    }
+
+    public void draw_tutorial()
+    {
+        unhighlight();
+
+        ResetTutorialBox(mergeTutNode);
+        ItemCard[] itemCards = FindObjectsByType<ItemCard>(FindObjectsSortMode.None);
+        GameObject[] itemObjects = itemCards.Select(comp => comp.gameObject).ToArray();
+
+        highlight(itemObjects);
+    }
+
+    public void merge_tutorial(GameObject datecard)
+    {
+        unhighlight();
+
+        InitCard(sabrinaCard);
+        ResetTutorialBox(giftTutNode);
+
+        GameObject[] datecardHighlight = {datecard, sabrinaCard};
+        highlight(datecardHighlight);
+        
+    }
+
+    public void merge_fail()
+    {
+        if (tutorialCurrent != mergeFail)
+        {
+            ResetTutorialBox(mergeFail);
+        }
+        
+    }
+
+    public void player_no_match()
+    {
+        if (tutorialCurrent != playerNoMatch)
+        {
+            ResetTutorialBox(playerNoMatch);
+        }
+        
+    }
+
+    public void player_sabrina_match()
+    {
+        if (tutorialCurrent != sabrinaPlayerNoMatch)
+        {
+            ResetTutorialBox(sabrinaPlayerNoMatch);
+        }
+        
+    }
+
+    public void sabrina_no_match()
+    {
+        if (tutorialCurrent != sabrinaNoMatch)
+        {
+            ResetTutorialBox(sabrinaNoMatch);
+        }
+        
+    }
+
     private void ResetTutorialBox(DialogueNode startNode)
     {
         tutorialCurrent = startNode;
@@ -111,5 +196,41 @@ public class EventScript : MonoBehaviour
 
         tutorialTextPanel.SetActive(true);
         tutorialText.text = tutorialCurrent.dialogue[currentTutLine];
+    }
+
+    private void highlight(GameObject[] highlightedCards)
+    {
+        darkenScreen.SetActive(true);
+        darkenScreen.GetComponent<Animator>().SetBool("Darken", true);
+
+        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+        foreach (GameObject card in cards)
+        {
+            if (!highlightedCards.Contains(card))
+            {
+                card.GetComponent<Animator>().SetBool("Darken", true);
+            }
+        }
+    }
+
+    public void unhighlight()
+    {
+        darkenScreen.GetComponent<Animator>().SetBool("Darken", false);
+        darkenScreen.SetActive(false);
+
+        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+        foreach (GameObject card in cards)
+        {
+            card.GetComponent<Animator>().SetBool("Darken", false);
+        }
+    }
+
+    public static void InitCard(GameObject card)
+    {
+        card.SetActive(true);
+        Animator cardAnim = card.GetComponent<Animator>();
+
+        cardAnim.SetTrigger("Init");
+        cardAnim.SetTrigger("Enter");
     }
 }

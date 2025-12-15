@@ -11,15 +11,11 @@ public class ItemCard : Card
     public GameObject[] datePossibilities; 
     public static bool tutMerged;
 
-    //
-    public GameObject tutorialTextPanel;
-    public TMP_Text tutorialText;
-
     void Update()
     {
         if (!transform.parent)
         {
-            if (transform.childCount != 0 && merging == false)
+            if (transform.childCount > 1 && merging == false)
             {
                 Card[] allCards = GetComponentsInChildren<Card>();
 
@@ -32,34 +28,50 @@ public class ItemCard : Card
                     merging = true;
                     return;
                 }
+                else
+                {
+                    foreach (Card card in transform.GetComponentsInChildren<Card>())
+                    {
+                        card.gameObject.transform.parent = null;
+                    }
+                    GameManagerSingle.Instance.GetComponent<EventScript>().merge_fail();
+                }
             }
         }
     }
 
     public override void FinishMerge()
     {
-        if (!tutMerged)
-        {
-            tutMerged = true;
-            EventScript.merged = true;
-        }
+        
+        GameObject temp_tut_datecard = null;
+
         switch (result)
         {
             case cardType.mallDate:
-                Instantiate(datePossibilities[0], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[0], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
 
             case cardType.coffeeDate:
-                Instantiate(datePossibilities[1], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[1], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
 
             case cardType.arenaDate:
-                Instantiate(datePossibilities[2], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[2], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
 
             case cardType.restaurantDate:
-                Instantiate(datePossibilities[3], gameObject.transform.position, Quaternion.identity);
+                temp_tut_datecard = Instantiate(datePossibilities[3], gameObject.transform.position, Quaternion.identity);
+                EventScript.InitCard(temp_tut_datecard);
                 break;
+        }
+
+        if (!tutMerged && temp_tut_datecard != null)
+        {
+            tutMerged = true;
+            GameManagerSingle.Instance.GetComponent<EventScript>().merge_tutorial(temp_tut_datecard);
         }
 
         merging = false;

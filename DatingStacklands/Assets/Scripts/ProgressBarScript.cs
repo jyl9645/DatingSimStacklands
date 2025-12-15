@@ -10,7 +10,7 @@ public class ProgressBarScript : MonoBehaviour
     void Update()
     {
 
-        if (transform.parent.childCount == 1)
+        if (transform.parent.childCount == 2)
         {
             transform.parent.GetComponent<Card>().merging = false;
             Destroy(gameObject);

@@ -28,19 +28,19 @@ public class DragManager : MonoBehaviour
                     {
                         cardChild.gameObject.transform.parent = null;
                     }
-                    currentDrag.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                    GetSpriteRenderer(currentDrag).sortingOrder = 0;
                 }
                 
                 if (currentDrag.transform.childCount != 0)
                 {
                     foreach (Transform child in transform)
                     {
-                        child.GetComponent<SpriteRenderer>().sortingOrder += upOrder;
+                        GetSpriteRenderer(child.gameObject).sortingOrder += upOrder;
                     }
                 }
                 else
                 {
-                    currentDrag.GetComponent<SpriteRenderer>().sortingOrder = upOrder;
+                    GetSpriteRenderer(currentDrag).sortingOrder = upOrder;
                 }
             }
         }
@@ -58,16 +58,16 @@ public class DragManager : MonoBehaviour
         {
             currentDrag.transform.position = new Vector3(currentDrag.transform.position.x, currentDrag.transform.position.y, 0);
 
-            if (currentDrag.transform.childCount != 0)
+            if (currentDrag.transform.childCount > 1)
             {
                 foreach (Transform child in transform)
                 {
-                    child.GetComponent<SpriteRenderer>().sortingOrder -= upOrder;
+                    GetSpriteRenderer(child.gameObject).sortingOrder -= upOrder;
                 }
             }
             else
             {
-                currentDrag.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                GetSpriteRenderer(currentDrag).sortingOrder = 0;
             }
 
             CheckForCollision();
@@ -96,8 +96,8 @@ public class DragManager : MonoBehaviour
 
             if (currentDrag.transform.parent)
             {
-                int parentOrder = currentDrag.transform.parent.GetComponent<SpriteRenderer>().sortingOrder;
-                currentDrag.GetComponent<SpriteRenderer>().sortingOrder = parentOrder + 1;
+                int parentOrder = GetSpriteRenderer(currentDrag.transform.parent.gameObject).sortingOrder;
+                GetSpriteRenderer(currentDrag).sortingOrder = parentOrder + 1;
             }
             
             Vector3 stackedPos = newParent.position;
@@ -106,5 +106,10 @@ public class DragManager : MonoBehaviour
             return;
         }
 
+    }
+
+    private SpriteRenderer GetSpriteRenderer(GameObject card)
+    {
+       return card.transform.Find("Sprite").GetComponent<SpriteRenderer>();
     }
 }

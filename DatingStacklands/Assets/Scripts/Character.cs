@@ -6,6 +6,8 @@ using UnityEngine;
 using System;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class Character: Card
 {
@@ -34,9 +36,32 @@ public class Character: Card
 
     void Update()
     {
-        if (transform.childCount != 0 && !merging)
+        if (transform.childCount > 1 && !merging)
         {
-            StartMerge();
+            cardType childType = transform.GetChild(1).gameObject.GetComponent<Card>().type;
+            if (isDateCard(childType))
+            {
+                StartMerge();
+            }
+            else if ((childType == cardType.player && type == cardType.sabrina) || (childType == cardType.sabrina && type == cardType.player))
+            {
+                RemoveCardChildren();
+                GameManagerSingle.Instance.GetComponent<EventScript>().player_sabrina_match();
+            }
+            else
+            {
+                if (type == cardType.sabrina)
+                {
+                    RemoveCardChildren();
+                    GameManagerSingle.Instance.GetComponent<EventScript>().sabrina_no_match();
+                }
+                else if (type == cardType.player)
+                {
+                    RemoveCardChildren();
+                    GameManagerSingle.Instance.GetComponent<EventScript>().player_no_match();
+                }
+            }
+            
         }
     }
 
@@ -44,10 +69,13 @@ public class Character: Card
     {
         if (change < 0)
         {
+            //put camera shake code here
+
+            //between these comments
+
+
             for (int i = 0; i < Mathf.Abs(change); i++)
             {
-                if (hearts <= 0) break;
-
                 hearts --;
                 Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1 - i).gameObject);
 
@@ -83,7 +111,7 @@ public class Character: Card
 
     public override void FinishMerge()
     {
-        GameObject stacked = transform.GetChild(0).gameObject;
+        GameObject stacked = transform.GetChild(1).gameObject;
         cardType stackedType = stacked.GetComponent<Card>().type;
 
         if (isDateCard(stackedType))
@@ -95,6 +123,12 @@ public class Character: Card
             stacked.transform.parent = null;
             merging = false;
             Destroy(stacked);
+
+            EventScript eS = GameManagerSingle.Instance.GetComponent<EventScript>();
+            if (eS.darkenScreen.activeSelf)
+            {
+                eS.unhighlight();
+            }
 
             switch (stackedType)
             {
@@ -117,14 +151,23 @@ public class Character: Card
                 default:
                     break;
             }
+
         }
 
         else
-        {
+        {            
             stacked.transform.parent = null;
             merging = false;
         }
 
+    }
+
+    private void RemoveCardChildren()
+    {
+        foreach (Card card in transform.GetComponentsInChildren<Card>())
+        {
+            card.gameObject.transform.parent = null;
+        }
     }
     
 } 

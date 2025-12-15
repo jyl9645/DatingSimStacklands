@@ -4,7 +4,6 @@ using UnityEngine;
 public class LocationCard : Card
 {
     public GameObject player;
-    public GameObject gameManager;
 
     public GameObject[] itemPool;
 
@@ -12,11 +11,11 @@ public class LocationCard : Card
 
     void Update()
     {
-        if (transform.childCount != 0 && !merging)
+        if (transform.childCount > 1 && !merging)
         {
-            if (transform.GetChild(0).GetComponent<Card>().type == cardType.player)
+            if (transform.GetChild(1).GetComponent<Card>().type == cardType.player)
             {
-                player = transform.GetChild(0).gameObject;
+                player = transform.GetChild(1).gameObject;
                 StartMerge();
             }
         }
@@ -36,6 +35,7 @@ public class LocationCard : Card
             }
 
             GameObject newItem = Instantiate(tempItems[randomChoice]);
+            EventScript.InitCard(newItem);
             tempItems[randomChoice] = null;
 
             float randomX = Random.Range(gameObject.transform.position.x - 1f, gameObject.transform.position.x + 1f);
@@ -49,10 +49,10 @@ public class LocationCard : Card
         if (!tutDrawn)
         {
             tutDrawn = true;
-            EventScript.drawn = true;
+            GameManagerSingle.Instance.GetComponent<EventScript>().draw_tutorial();
         }
         
-        gameManager.GetComponent<DayManager>().RemoveAction();
+        GameManagerSingle.Instance.GetComponent<DayManager>().RemoveAction();
     }
 
 }

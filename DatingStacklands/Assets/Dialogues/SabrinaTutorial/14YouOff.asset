@@ -24,5 +24,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   heart_change: 0
-  responses:
-  - {fileID: 11400000, guid: 5a60c78eef0a1d449a796a7ed1ebce56, type: 2}
+  responses: []
