@@ -176,8 +176,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Things didn't go bad nor perfect. But sometimes, that's okay. Life is worth
-    its thrill even as it stays constant.
+  m_text: Time ran out. Things didn't go bad nor perfect. But sometimes, that's okay.
+    Life is worth its thrill even if it stays constant.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52a7165fe9b1c874db9e0a26846291d2, type: 2}
   m_sharedMaterial: {fileID: 6078323255416131213, guid: 52a7165fe9b1c874db9e0a26846291d2, type: 2}

@@ -7,6 +7,8 @@ public class DayManager : MonoBehaviour
 
     public TMP_Text dayText;
     public TMP_Text actionsText;
+    public Animator camAnim;
+    public AudioScript audioScript;
 
     public int day = 1;
     private int actionsDefault = 2;
@@ -14,7 +16,7 @@ public class DayManager : MonoBehaviour
 
     void Start()
     {
-        actions = actionsDefault;
+        audioScript = gameObject.GetComponent<AudioScript>();
         day = 1;
 
         dayText.text = "Day " + day;

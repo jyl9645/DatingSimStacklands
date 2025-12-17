@@ -232,6 +232,9 @@ MonoBehaviour:
   mergedSound: {fileID: 0}
   warpSound: {fileID: 0}
   bKSound: {fileID: 0}
+  carddropSound: {fileID: 0}
+  stackSound: {fileID: 0}
+  cardpickSound: {fileID: 0}
 --- !u!82 &220366208
 AudioSource:
   m_ObjectHideFlags: 0

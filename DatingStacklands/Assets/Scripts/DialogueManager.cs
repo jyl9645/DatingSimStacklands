@@ -116,13 +116,6 @@ public class DialogueManager : MonoBehaviour
 
         currentLine = 0;
 
-        RectTransform containerTransform = heartContainer.GetComponent<RectTransform>();
-        Vector3 tempheartContPos = containerTransform.anchoredPosition;
-        tempheartContPos.x = -5;
-
-        containerTransform.anchoredPosition = tempheartContPos;
-        containerTransform.localScale = new Vector3(1,1,1);
-
         if (current.conditionOperator == DialogueNode.op.lessthan)
         {
             if (dater.GetComponent<Character>().hearts >= current.condition)

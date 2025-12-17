@@ -47,6 +47,8 @@ public class EventScript : MonoBehaviour
     //cam animator
     public Animator camAnimator;
 
+    public AudioScript audioScript;
+
     //in game event nodes
     public DialogueNode mergeFail;
     public DialogueNode sabrinaNoMatch;
@@ -59,6 +61,7 @@ public class EventScript : MonoBehaviour
     void Start()
     {
         dialogueManager = GetComponent<DialogueManager>();
+        audioScript = GetComponent<AudioScript>();
     }
 
     void Update()
@@ -111,6 +114,8 @@ public class EventScript : MonoBehaviour
 
     public void get_off_Tutorial()
     {
+        print("get tut");
+
         unhighlight();
 
         InitCard(player);
@@ -121,6 +126,7 @@ public class EventScript : MonoBehaviour
 
     public void location_Cam_tutorial()
     {
+        print("location tut");
         unhighlight();
 
         InitCard(mallCard);
@@ -132,6 +138,7 @@ public class EventScript : MonoBehaviour
 
     public void draw_tutorial()
     {
+        print("draw tut");
         unhighlight();
 
         ResetTutorialBox(mergeTutNode);
@@ -143,6 +150,7 @@ public class EventScript : MonoBehaviour
 
     public void merge_tutorial(GameObject datecard)
     {
+        print("merge tut");
         unhighlight();
 
         InitCard(sabrinaCard);

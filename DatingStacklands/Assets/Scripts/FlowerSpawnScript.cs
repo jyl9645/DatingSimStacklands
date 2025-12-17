@@ -7,7 +7,6 @@ public class FlowerSpawnScript : MonoBehaviour
 
     public GameObject sabrina;
     private Character sabrinaCharacter;
-    private Character coltonCharacter;
 
     private bool flowerMade;
 
@@ -24,6 +23,8 @@ public class FlowerSpawnScript : MonoBehaviour
             {
                 GameObject flower = Instantiate(flowerCard);
                 EventScript.InitCard(flower);
+                StartCoroutine(LocationCard.LerpToTarget(flower, new Vector2(-2,0),0.5f));
+
                 flowerMade = true;
             }
         }
