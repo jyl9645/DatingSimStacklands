@@ -2919,7 +2919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 793312869}
   clickSound: {fileID: 8300000, guid: ed37e98fd51af3944b02c2f2038f3d2e, type: 3}
-  mergingSound: {fileID: 8300000, guid: 2ba4d6f8bf4c8a345a5fdef2eefd88d7, type: 3}
+  mergingSound: {fileID: 8300000, guid: 247b0410ef71f4bfda6c78ecde03e007, type: 3}
   mergedSound: {fileID: 8300000, guid: 4d8935ca12f6a444ab29aa15679cd8da, type: 3}
   warpSound: {fileID: 8300000, guid: a988413d578f7d547ae558a54ed967ae, type: 3}
   bKSound: {fileID: 8300000, guid: 2155f20bfa95afe499942c70ed9deb98, type: 3}

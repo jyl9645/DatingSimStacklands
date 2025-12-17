@@ -63,7 +63,6 @@ public class DragManager : MonoBehaviour
             v3.z = 10;
             v3 = Camera.main.ScreenToWorldPoint(v3);
             v3 = new Vector3(Mathf.Clamp(v3.x, -8, 8), Mathf.Clamp(v3.y, -4, 4), v3.z);
-            audioScript.cardDropSoundPlay();
             currentDrag.transform.position = v3;
             GetSpriteRenderer(currentDrag).sortingOrder = upOrder;
         }
@@ -71,7 +70,8 @@ public class DragManager : MonoBehaviour
         else if (currentDrag && Input.GetMouseButtonUp(0))
         {
             currentDrag.transform.position = new Vector3(currentDrag.transform.position.x, currentDrag.transform.position.y, 0);
-
+            audioScript.cardDropSoundPlay();
+            
             if (currentDrag.transform.childCount > 1)
             {
                 foreach (Transform child in transform)
