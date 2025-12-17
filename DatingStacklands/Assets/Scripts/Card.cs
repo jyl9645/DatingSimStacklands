@@ -1,7 +1,4 @@
-using System;
-using Mono.Cecil.Cil;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {

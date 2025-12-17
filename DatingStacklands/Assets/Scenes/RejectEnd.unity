@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The universe might have prepared the perfect timetable set for you. However,
+  m_text: You rejected Sabrina! The universe may know what's best for you. However,
     always remember that you call the final shot.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52a7165fe9b1c874db9e0a26846291d2, type: 2}

@@ -28,6 +28,8 @@ public class DragManager : MonoBehaviour
             {
                 audioScript.cardpickSoundPlay();
                 currentDrag = hit.collider.gameObject;
+                currentDrag.GetComponent<Animator>().SetTrigger("Scaledup");
+
                 if (currentDrag.GetComponent<Card>().frozen)
                 {
                     currentDrag = null;
@@ -70,6 +72,7 @@ public class DragManager : MonoBehaviour
         else if (currentDrag && Input.GetMouseButtonUp(0))
         {
             currentDrag.transform.position = new Vector3(currentDrag.transform.position.x, currentDrag.transform.position.y, 0);
+            currentDrag.GetComponent<Animator>().SetTrigger("Scaleddown");
             audioScript.cardDropSoundPlay();
             
             if (currentDrag.transform.childCount > 1)

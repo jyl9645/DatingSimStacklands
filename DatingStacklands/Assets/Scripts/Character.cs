@@ -1,13 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEngine.UI;
 using UnityEngine;
-using System;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 
 public class Character: Card
 {

@@ -176,8 +176,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Not all people are meant for each other. Life hits you with many obstacles,
-    and sometimes, it's okay to run at them again.
+  m_text: You hit zero hearts. Not all people are meant for each other. Life may
+    go wrong, and sometimes, it's okay to try again.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52a7165fe9b1c874db9e0a26846291d2, type: 2}
   m_sharedMaterial: {fileID: 6078323255416131213, guid: 52a7165fe9b1c874db9e0a26846291d2, type: 2}
