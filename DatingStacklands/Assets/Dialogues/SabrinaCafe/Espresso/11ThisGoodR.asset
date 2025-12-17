@@ -31,5 +31,5 @@ MonoBehaviour:
   - {fileID: 245999297116322372, guid: 9dbd89cf737554e80b1a4aea58ef0ae0, type: 3}
   - {fileID: 8766204133149993791, guid: 5aefc702a79994149ab74f3331148363, type: 3}
   - {fileID: 8766204133149993791, guid: 3665144cdeadc44c9a21432d806e00ff, type: 3}
-  heart_change: 1
+  heart_change: 2
   responses: []

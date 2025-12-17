@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 581423963838773181}
   - component: {fileID: 8427933018593436602}
   - component: {fileID: 7028030505888524433}
+  - component: {fileID: 344147595895985796}
   m_Layer: 5
   m_Name: DarkenTransitionPanel
   m_TagString: Untagged
@@ -98,3 +99,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &344147595895985796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658881820443380559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74349679fd896ba41a750d5e87c4e0cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 7028030505888524433}

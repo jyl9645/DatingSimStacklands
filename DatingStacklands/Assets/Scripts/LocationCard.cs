@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,16 +28,20 @@ public class LocationCard : Card
     {
         if (!tutDrawn)
         {
+            float interval = -4;
             tutDrawn = true;
             GameManagerSingle.Instance.GetComponent<EventScript>().draw_tutorial();
             foreach (GameObject itemObj in tutorialItems)
             {
                 GameObject item = Instantiate(itemObj);
                 EventScript.InitCard(item);
+                StartCoroutine(LerpToTarget(item, new Vector2(interval,0),0.5f));
+                interval += 2;
             }
         }
         else
         {
+            float interval = -4;
             int numItems = Random.Range(2,3);
             GameObject[] tempItems = (GameObject[])itemPool.Clone();
         
@@ -52,17 +57,33 @@ public class LocationCard : Card
                 EventScript.InitCard(newItem);
                 tempItems[randomChoice] = null;
 
-                float randomX = Random.Range(gameObject.transform.position.x - 1f, gameObject.transform.position.x + 1f);
-                float randomY = Random.Range(gameObject.transform.position.y - 1f, gameObject.transform.position.y + 1f);
-
-                newItem.transform.position = new Vector2(randomX, randomY);
+                StartCoroutine(LerpToTarget(newItem, new Vector2(interval, 0),0.5f));
+                interval += 2;
             }
         }
 
         player.transform.parent = null;
+        StartCoroutine(LerpToTarget(player, new Vector2(-2,2.4f), 0.5f));
         merging = false;
         
         GameManagerSingle.Instance.GetComponent<DayManager>().RemoveAction();
+    }
+
+    public static IEnumerator LerpToTarget(GameObject obj, Vector2 endPos, float dur)
+    {
+        float timePassed = 0;
+        Vector2 startPos = obj.transform.position;
+
+        while (timePassed < dur)
+        {
+            timePassed += Time.deltaTime;
+            float t = timePassed / dur;
+
+            obj.transform.position = Vector3.Lerp(startPos, endPos, t);
+            yield return null;
+        }
+
+        obj.transform.position = endPos;
     }
 
 }

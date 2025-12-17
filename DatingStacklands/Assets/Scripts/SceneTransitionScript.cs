@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class SceneTransitionScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Animator anim;
+    public void Lighten()
     {
-        
+        anim.SetTrigger("Light");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Darken()
     {
-        
+        anim.SetTrigger("Dark");
     }
 }

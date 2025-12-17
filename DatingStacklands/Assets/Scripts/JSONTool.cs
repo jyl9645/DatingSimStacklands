@@ -50,13 +50,18 @@ public class JSONTool : MonoBehaviour
             else
             {
                 resultingCard = formula.result;
+                Card.cardType[] tempreqs = (Card.cardType[])formula.requirements.Clone();
 
                 foreach (Card card in checkList)
                 {
-                    if (!formula.requirements.Contains(card.GetComponent<Card>().type))
+                    if (!tempreqs.Contains(card.type))
                     {
                         print("no");
                         resultingCard = Card.cardType.none;
+                    }
+                    else
+                    {
+                        tempreqs[Array.IndexOf(tempreqs, card.type)] = Card.cardType.none;
                     }
                 }
 
@@ -87,7 +92,10 @@ public class JSONTool : MonoBehaviour
                new Formula {requirements = new Card.cardType[] {Card.cardType.magazineItem, Card.cardType.ticketItem}, result = Card.cardType.mallDate},
                new Formula {requirements = new Card.cardType[] {Card.cardType.cakeItem, Card.cardType.magazineItem}, result = Card.cardType.coffeeDate},
                new Formula {requirements = new Card.cardType[] {Card.cardType.ticketItem, Card.cardType.clothesItem}, result = Card.cardType.arenaDate},
-               new Formula {requirements = new Card.cardType[] {Card.cardType.vinylItem, Card.cardType.ticketItem}, result = Card.cardType.arenaDate} 
+               new Formula {requirements = new Card.cardType[] {Card.cardType.vinylItem, Card.cardType.ticketItem}, result = Card.cardType.arenaDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.flowersItem, Card.cardType.espressoItem}, result = Card.cardType.restaurantDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.flowersItem, Card.cardType.clothesItem}, result = Card.cardType.restaurantDate},
+               new Formula {requirements = new Card.cardType[] {Card.cardType.flowersItem, Card.cardType.magazineItem}, result = Card.cardType.restaurantDate} 
             };
 
             FormulaList sampleList = new FormulaList();
