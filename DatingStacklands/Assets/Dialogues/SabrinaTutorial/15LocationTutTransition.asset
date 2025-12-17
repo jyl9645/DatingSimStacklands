@@ -16,7 +16,7 @@ MonoBehaviour:
   conditionOperator: 0
   condition: 0
   dialogue:
-  - Maybe I can get something from one of these places?
+  - Maybe I can get something from one of these locations?
   sprite:
   - {fileID: 0}
   heart_change: 0

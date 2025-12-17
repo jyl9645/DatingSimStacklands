@@ -17,9 +17,10 @@ MonoBehaviour:
   condition: 0
   dialogue:
   - I want to talk to her.
-  - But first I have to get a gift.
+  - But first I have to make an excuse.
   sprite:
   - {fileID: 0}
   - {fileID: 0}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: 2b19158529ea4714abafce40bf1539bc, type: 2}

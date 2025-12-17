@@ -20,4 +20,5 @@ MonoBehaviour:
   sprite:
   - {fileID: 0}
   heart_change: 0
-  responses: []
+  responses:
+  - {fileID: 11400000, guid: 8146135d2f001e748a7808ef7a1eb0a5, type: 2}

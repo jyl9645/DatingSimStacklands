@@ -5,17 +5,12 @@ public class ProgressBarScript : MonoBehaviour
 
     float timer = 0f;
 
-    GameObject fillBlock;
-
-    void Start()
-    {
-        fillBlock = transform.GetChild(0).gameObject;
-    }
+    public GameObject fillBlock;
 
     void Update()
     {
 
-        if (transform.parent.childCount == 1)
+        if (transform.parent.childCount == 2)
         {
             transform.parent.GetComponent<Card>().merging = false;
             Destroy(gameObject);

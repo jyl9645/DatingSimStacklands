@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Diagnostics;
+using System.ComponentModel;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,10 +15,13 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialoguePanel;
     public GameObject[] choicePanels;
     
-    public GameObject dialogueBox;
+    public Image dialogueBox;
+    public Image background;
 
     public Image image;
     public TMP_Text heartCounter;
+
+    public AudioScript audioScript;
 
     //text of dialogue box
     private TMP_Text dialogueText;
@@ -35,21 +41,42 @@ public class DialogueManager : MonoBehaviour
     private GameObject[] cards;
 
     //dialogue box prefabs
-    public GameObject sabrinaBox;
-    public GameObject playerBox;
-    public GameObject noBox;
+    public Sprite sabrinaBox;
+    public Sprite playerBox;
+    public Sprite noBox;
+
+    public Sprite defaultSprite;
+
+    //tutorial/start stuff
+    public DialogueNode startDialogue;
+    public GameObject sabrinaObject;
+    public Sprite busBK;
+
+    //animator
+    public Animator camAnim;
+
+    //tutorial getOff transition
+    public DialogueNode getOffNode;
+
+    //heart container
+    public GameObject heartContainer;
 
     void Start()
     {
         dialogueText = dialoguePanel.GetComponentInChildren<TMP_Text>();
 
-        CloseDialogue();
+        HideChoices();
+
+        InitiateDialogue(startDialogue, sabrinaObject);
+        background.sprite = busBK;
+        
     }
 
     void Update()
     {
         if (onDate && Input.GetMouseButtonDown(0) && !isChoosing)
         {
+            audioScript.ClickSoundPlay();
             //if there is more dialogue lines to go in the node
             if (currentLine + 1 < current.dialogue.Length)
             {
@@ -67,7 +94,10 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    CloseDialogue();
+                    onDate = false;
+                    camAnim.SetTrigger("Transit");
+                    audioScript.warpSoundPlay();
+
                 }
             }
         }
@@ -78,8 +108,19 @@ public class DialogueManager : MonoBehaviour
         dater = datee;
         onDate = true;
         current = root;
-        dateScreen.SetActive(true);
+       
+        //initiate transition animation, which will activate the date screen at its end
+        camAnim.SetTrigger("Transit");
+        audioScript.warpSoundPlay();
+
         currentLine = 0;
+
+        RectTransform containerTransform = heartContainer.GetComponent<RectTransform>();
+        Vector3 tempheartContPos = containerTransform.anchoredPosition;
+        tempheartContPos.x = -5;
+
+        containerTransform.anchoredPosition = tempheartContPos;
+        containerTransform.localScale = new Vector3(1,1,1);
 
         if (current.conditionOperator == DialogueNode.op.lessthan)
         {
@@ -88,9 +129,9 @@ public class DialogueManager : MonoBehaviour
                 current = current.responses[0];
             }
         }
-        else if (current.conditionOperator == DialogueNode.op.morethan)
+        if (current.conditionOperator == DialogueNode.op.morethan)
         {
-            if (dater.GetComponent<Character>().hearts <= current.condition)
+            if (dater.GetComponent<Character>().hearts < current.condition)
             {
                 current = current.responses[0];
             }
@@ -99,33 +140,34 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = current.dialogue[currentLine];
         ChangeDialogueBox(current.speaker);
-        image.sprite = current.sprite[currentLine];
+        ChangeCharImage(current.sprite[currentLine]);
         heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
 
-        cards = GameObject.FindGameObjectsWithTag("Card");
-
-        foreach (GameObject card in cards)
-        {
-            print(card);
-            card.SetActive(false);
-        }
+        //cards are hid during animatin transition event
+        //date screen will open with animation transition event
     }
 
     public void CloseDialogue()
     {
-        onDate = false;
-        current = null;
-        dateScreen.SetActive(false);
-        HideChoices();
-        GetComponent<DayManager>().RemoveAction();
+       onDate = false;
+       current = null;
+       dateScreen.SetActive(false);
+       HideChoices();
+       GetComponent<DayManager>().RemoveAction();
 
-        foreach (GameObject card in cards)
-        {
-            if (card)
-            {
-                card.SetActive(true);
-            }
-        }
+       foreach (GameObject card in cards)
+       {
+           if (card)
+           {
+               card.SetActive(true);
+               EventScript.InitCard(card);
+           }
+       }
+
+       RectTransform containerTransform = heartContainer.GetComponent<RectTransform>();
+
+       containerTransform.anchoredPosition = new Vector3(0-88, 198, -4087.722f);
+       containerTransform.localScale = new Vector3(0.74544f, 0.74544f, 0.74544f);
     }
 
     private void NextDialogueNode(int index)
@@ -136,14 +178,14 @@ public class DialogueManager : MonoBehaviour
         {
             if (dater.GetComponent<Character>().hearts >= current.condition)
             {
-                current = current.responses[0];
+                NextDialogueNode(0);
             }
         }
         else if (current.conditionOperator == DialogueNode.op.morethan)
         {
-            if (dater.GetComponent<Character>().hearts <= current.condition)
+            if (dater.GetComponent<Character>().hearts < current.condition)
             {
-                current = current.responses[0];
+                NextDialogueNode(0);
             }
             
         }
@@ -152,7 +194,7 @@ public class DialogueManager : MonoBehaviour
         
         dialogueText.text = current.dialogue[currentLine];
         ChangeDialogueBox(current.speaker);
-        image.sprite = current.sprite[currentLine];
+        ChangeCharImage(current.sprite[currentLine]);
 
         dater.GetComponent<Character>().ChangeHearts(current.heart_change);
         heartCounter.text = dater.GetComponent<Character>().hearts.ToString();
@@ -164,7 +206,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = current.dialogue[currentLine];
         ChangeDialogueBox(current.speaker);
-        image.sprite = current.sprite[currentLine];
+        ChangeCharImage(current.sprite[currentLine]);
     }
 
     public void NextIndexDialogueNode(int index)
@@ -196,28 +238,41 @@ public class DialogueManager : MonoBehaviour
         isChoosing = false;
     }
 
-    private void HideCards()
+    public void HideCards()
     {
-        foreach (GameObject card in GameObject.FindGameObjectsWithTag("Card"))
+        cards = GameObject.FindGameObjectsWithTag("Card");
+
+        foreach (GameObject card in cards)
         {
             card.SetActive(false);
         }
     }
 
-    private void ChangeDialogueBox(string name)
+    private void ChangeDialogueBox(String name)
     {
         if (name == "Sabrina")
         {
-            dialogueBox = sabrinaBox;
+            dialogueBox.sprite = sabrinaBox;
         }
         else if (name == "You")
         {
-            dialogueBox = playerBox;
+            dialogueBox.sprite = playerBox;
         }
         else
         {
-            dialogueBox = noBox;
+            dialogueBox.sprite = noBox;
         }
     }
 
+    private void ChangeCharImage(Sprite sprite)
+    {
+        if (sprite == null)
+        {
+            image.sprite = defaultSprite;
+        }
+        else
+        {
+            image.sprite = sprite;
+        }
+    }
 }
