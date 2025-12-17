@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DragManager : MonoBehaviour
@@ -21,6 +22,11 @@ public class DragManager : MonoBehaviour
             if (hit)
             {
                 currentDrag = hit.collider.gameObject;
+                if (currentDrag.GetComponent<Card>().frozen)
+                {
+                    currentDrag = null;
+                    return;
+                }
                 
                 if (currentDrag.transform.parent)
                 {
@@ -52,6 +58,7 @@ public class DragManager : MonoBehaviour
             v3 = Camera.main.ScreenToWorldPoint(v3);
             v3 = new Vector3(Mathf.Clamp(v3.x, -8, 8), Mathf.Clamp(v3.y, -4, 4), v3.z);
             currentDrag.transform.position = v3;
+            GetSpriteRenderer(currentDrag).sortingOrder = upOrder;
         }
 
         else if (currentDrag && Input.GetMouseButtonUp(0))
@@ -82,7 +89,7 @@ public class DragManager : MonoBehaviour
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(
             col.bounds.center,
-            col.bounds.size,
+            col.bounds.size/2,
             0f
         );
 
@@ -110,6 +117,6 @@ public class DragManager : MonoBehaviour
 
     private SpriteRenderer GetSpriteRenderer(GameObject card)
     {
-       return card.transform.Find("Sprite").GetComponent<SpriteRenderer>();
+       return card.transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 }
