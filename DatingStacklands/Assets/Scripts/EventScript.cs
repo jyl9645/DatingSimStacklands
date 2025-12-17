@@ -47,6 +47,8 @@ public class EventScript : MonoBehaviour
     //cam animator
     public Animator camAnimator;
 
+    public AudioScript audioScript;
+
     //in game event nodes
     public DialogueNode mergeFail;
     public DialogueNode sabrinaNoMatch;
@@ -59,6 +61,7 @@ public class EventScript : MonoBehaviour
     void Start()
     {
         dialogueManager = GetComponent<DialogueManager>();
+        audioScript = GetComponent<AudioScript>();
     }
 
     void Update()

@@ -63,6 +63,11 @@ public class Character: Card
             }
             
         }
+
+        if (hearts <= 0)
+        {
+            SceneManager.LoadScene("BadEnd");
+        }
     }
 
     public void ChangeHearts(float change)
@@ -78,11 +83,6 @@ public class Character: Card
             {
                 hearts --;
                 Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1 - i).gameObject);
-
-                if (hearts <= 0)
-                {
-                    SceneManager.LoadScene("BadEnd");
-                }
             }
         }
 
