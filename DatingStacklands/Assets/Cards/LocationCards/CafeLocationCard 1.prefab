@@ -102,6 +102,9 @@ MonoBehaviour:
   - {fileID: 2788106618683824112, guid: b291aabafa6caee41814affb5c604321, type: 3}
   - {fileID: 2788106618683824112, guid: 6ff7a7ab3002a9244bc74378e708fdd8, type: 3}
   - {fileID: 2788106618683824112, guid: 530f33b16b5d0a54d85bb034facc1fb9, type: 3}
+  tutorialItems:
+  - {fileID: 2788106618683824112, guid: 3022ca0dfcc467240a25a5a2f5a89b9b, type: 3}
+  - {fileID: 2788106618683824112, guid: 530f33b16b5d0a54d85bb034facc1fb9, type: 3}
 --- !u!95 &-1924361798130399733
 Animator:
   serializedVersion: 7

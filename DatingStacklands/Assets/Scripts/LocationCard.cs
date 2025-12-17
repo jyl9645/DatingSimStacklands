@@ -9,6 +9,8 @@ public class LocationCard : Card
 
     public static bool tutDrawn;
 
+    public GameObject[] tutorialItems;
+
     void Update()
     {
         if (transform.childCount > 1 && !merging)
@@ -23,34 +25,42 @@ public class LocationCard : Card
 
     public override void FinishMerge()
     {
-        int numItems = Random.Range(2,3);
-        GameObject[] tempItems = (GameObject[])itemPool.Clone();
-
-        for (var i = 0; i < numItems; i ++)
-        {
-            int randomChoice = Random.Range(0, tempItems.Length);
-            while (tempItems[randomChoice] == null)
-            {
-                randomChoice = Random.Range(0, tempItems.Length);
-            }
-
-            GameObject newItem = Instantiate(tempItems[randomChoice]);
-            EventScript.InitCard(newItem);
-            tempItems[randomChoice] = null;
-
-            float randomX = Random.Range(gameObject.transform.position.x - 1f, gameObject.transform.position.x + 1f);
-            float randomY = Random.Range(gameObject.transform.position.y - 1f, gameObject.transform.position.y + 1f);
-
-            newItem.transform.position = new Vector2(randomX, randomY);
-        }
-
-        player.transform.parent = null;
-        merging = false;
         if (!tutDrawn)
         {
             tutDrawn = true;
             GameManagerSingle.Instance.GetComponent<EventScript>().draw_tutorial();
+            foreach (GameObject itemObj in tutorialItems)
+            {
+                GameObject item = Instantiate(itemObj);
+                EventScript.InitCard(item);
+            }
         }
+        else
+        {
+            int numItems = Random.Range(2,3);
+            GameObject[] tempItems = (GameObject[])itemPool.Clone();
+        
+            for (var i = 0; i < numItems; i ++)
+            {
+                int randomChoice = Random.Range(0, tempItems.Length);
+                while (tempItems[randomChoice] == null)
+                {
+                    randomChoice = Random.Range(0, tempItems.Length);
+                }
+
+                GameObject newItem = Instantiate(tempItems[randomChoice]);
+                EventScript.InitCard(newItem);
+                tempItems[randomChoice] = null;
+
+                float randomX = Random.Range(gameObject.transform.position.x - 1f, gameObject.transform.position.x + 1f);
+                float randomY = Random.Range(gameObject.transform.position.y - 1f, gameObject.transform.position.y + 1f);
+
+                newItem.transform.position = new Vector2(randomX, randomY);
+            }
+        }
+
+        player.transform.parent = null;
+        merging = false;
         
         GameManagerSingle.Instance.GetComponent<DayManager>().RemoveAction();
     }

@@ -64,6 +64,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialogueText = dialoguePanel.GetComponentInChildren<TMP_Text>();
+        audioScript = GameManagerSingle.Instance.GetComponent<AudioScript>();
 
         HideChoices();
 
@@ -153,6 +154,7 @@ public class DialogueManager : MonoBehaviour
        current = null;
        dateScreen.SetActive(false);
        HideChoices();
+       GameManagerSingle.Instance.GetComponent<EventScript>().unhighlight();
        GetComponent<DayManager>().RemoveAction();
 
        foreach (GameObject card in cards)
