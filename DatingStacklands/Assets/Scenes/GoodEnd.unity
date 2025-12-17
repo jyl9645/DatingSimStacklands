@@ -176,8 +176,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sabrina now sees the beauty in your soul. Cherish your moments together
-    as you two run hand in hand through the fields of life.
+  m_text: You accepted Sabrina! Sabrina now sees the beauty in you. Cherish your
+    moments together as you run headfirst in to life.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52a7165fe9b1c874db9e0a26846291d2, type: 2}
   m_sharedMaterial: {fileID: 6078323255416131213, guid: 52a7165fe9b1c874db9e0a26846291d2, type: 2}

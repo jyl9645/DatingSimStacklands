@@ -1,7 +1,5 @@
 using System.Linq;
-using NUnit.Framework.Constraints;
 using TMPro;
-using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -156,8 +154,8 @@ public class EventScript : MonoBehaviour
         InitCard(sabrinaCard);
         ResetTutorialBox(giftTutNode);
 
-        GameObject[] datecardHighlight = {datecard, sabrinaCard};
-        highlight(datecardHighlight);
+        //GameObject[] datecardHighlight = {datecard, sabrinaCard};
+        //highlight(datecardHighlight);
         
     }
 
