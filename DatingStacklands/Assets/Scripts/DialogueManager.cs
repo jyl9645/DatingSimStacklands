@@ -64,6 +64,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         dialogueText = dialoguePanel.GetComponentInChildren<TMP_Text>();
+        audioScript = GameManagerSingle.Instance.GetComponent<AudioScript>();
 
         HideChoices();
 
