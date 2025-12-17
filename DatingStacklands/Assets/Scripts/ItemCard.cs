@@ -25,6 +25,7 @@ public class ItemCard : Card
                 {
                     result = possibleResult;
                     StartMerge();
+                    GameManagerSingle.Instance.GetComponent<AudioScript>().mergingSoundPlay();
                     merging = true;
                     return;
                 }
@@ -75,6 +76,7 @@ public class ItemCard : Card
         }
 
         merging = false;
+        GameManagerSingle.Instance.GetComponent<AudioScript>().mergedSoundPlay();
 
         Destroy(gameObject);
     }

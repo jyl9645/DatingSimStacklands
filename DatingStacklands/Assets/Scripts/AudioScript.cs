@@ -10,7 +10,9 @@ public class AudioScript : MonoBehaviour
     public AudioClip mergedSound;
     public AudioClip warpSound;
     public AudioClip bKSound;
-
+    public AudioClip carddropSound;
+    public AudioClip stackSound;
+    public AudioClip cardpickSound;
     public void ClickSoundPlay()
     {
         audioSource.PlayOneShot(clickSound);
@@ -29,5 +31,17 @@ public class AudioScript : MonoBehaviour
     public void warpSoundPlay()
     {
         audioSource.PlayOneShot(warpSound);
+    }
+    public void cardDropSoundPlay()
+    {
+        audioSource.PlayOneShot(carddropSound);
+    }
+    public void cardpickSoundPlay()
+    {
+        audioSource.PlayOneShot(cardpickSound);
+    }
+    public void stackSoundPlay()
+    {
+        audioSource.PlayOneShot(stackSound);
     }
 }

@@ -11,6 +11,11 @@ public class DragManager : MonoBehaviour
     private float offset = -0.5f;
     //sorting order for cards that are currently dragging/selected
     private int upOrder = 5;
+    public AudioScript audioScript;
+    void Start()
+    {
+      audioScript = GameManagerSingle.Instance.GetComponent<AudioScript>();
+      }
 
     void Update()
     {
@@ -21,6 +26,7 @@ public class DragManager : MonoBehaviour
 
             if (hit)
             {
+                audioScript.cardpickSoundPlay();
                 currentDrag = hit.collider.gameObject;
                 if (currentDrag.GetComponent<Card>().frozen)
                 {
@@ -64,7 +70,8 @@ public class DragManager : MonoBehaviour
         else if (currentDrag && Input.GetMouseButtonUp(0))
         {
             currentDrag.transform.position = new Vector3(currentDrag.transform.position.x, currentDrag.transform.position.y, 0);
-
+            audioScript.cardDropSoundPlay();
+            
             if (currentDrag.transform.childCount > 1)
             {
                 foreach (Transform child in transform)
@@ -92,6 +99,7 @@ public class DragManager : MonoBehaviour
             col.bounds.size/2,
             0f
         );
+        audioScript.stackSoundPlay();
 
         foreach (Collider2D h in hits)
         {
